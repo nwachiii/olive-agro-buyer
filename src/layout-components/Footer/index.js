@@ -39,8 +39,6 @@ const Footer = props => {
             </List>
           </div> */}
           <div className="app-footer--second">
-            <span>A React-redux Admin Dashboard with Material-UI</span> © 2020 -
-            crafted with <span className="text-danger px-1">❤</span> by{' '}
             <a
               href="https://doshservices.com"
               rel="noopener noreferrer"

@@ -9,7 +9,6 @@ body {
     flex-direction: column;
     paddingTop: 0;
     width: $sidebar-width;
-    background-color:#15181f ;
   }
 
   .app-sidebar-menu {
@@ -18,7 +17,6 @@ body {
   }
 
   .app-sidebar-wrapper {
-    background-color:#15181f ;
     overflow: hidden;
     display: flex;
     flex-direction: column;

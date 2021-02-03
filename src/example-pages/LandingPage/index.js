@@ -1,22 +1,22 @@
 import React, { Fragment } from 'react';
 
-import { Grid, Container, Button, Tooltip } from '@material-ui/core';
+// import { Grid, Container, Button, Tooltip } from '@material-ui/core';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { Link } from 'react-router-dom';
 
-import hero9 from '../../assets/images/hero-bg/hero-5.jpg';
+// import hero9 from '../../assets/images/Asset 2.png';
 
 const LandingPage = () => {
   return (
     <Fragment>
-      <div className="hero-wrapper bg-composed-wrapper bg-premium-dark min-vh-100">
+      <div className="hero-wrapper bg-composed-wrapper min-vh-100">
         <div className="flex-grow-1 w-100 d-flex align-items-center">
-          <div
+          {/* <div
             className="bg-composed-wrapper--image opacity-5"
             style={{ backgroundImage: 'url(' + hero9 + ')' }}
           />
-          <div className="bg-composed-wrapper--bg bg-second opacity-3" />
+           <div className="bg-composed-wrapper--bg bg-second opacity-3" />
           <div className="bg-composed-wrapper--bg bg-red-lights opacity-1" />
           <div className="bg-composed-wrapper--content pt-5 pb-2 py-lg-5">
             <Container maxWidth="md" className="pb-5">
@@ -102,8 +102,9 @@ const LandingPage = () => {
                 </Grid>
               </Grid>
             </Container>
-          </div>
+          </div>*/}
         </div>
+        <h1>olive agro landing/onboarding page comes in here</h1>
       </div>
     </Fragment>
   );
