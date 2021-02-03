@@ -1,5 +1,8 @@
 // Core
-
+body {
+  
+    background-color:#15181f ;
+}
 body {
   .app-sidebar-heading {
     padding: $spacer $spacer ($spacer / 1.1);
@@ -16,6 +19,7 @@ body {
   .app-sidebar-item {
     display: block;
     padding: 2px ($spacer) 1px 0;
+    background-color:#15181f ;
   }
 
   .app-sidebar-button {
