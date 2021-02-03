@@ -40,7 +40,7 @@ const Header = props => {
             <Box
               className="app-logo-wrapper"
               title="Olive Agro Buyer's Dashboard">
-              <Link to="/DashboardDefault" className="app-logo-link">
+              <Link to="/" className="app-logo-link">
                 <IconButton
                   color="primary"
                   size="medium"
