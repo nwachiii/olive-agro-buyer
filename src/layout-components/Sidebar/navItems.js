@@ -58,6 +58,7 @@ export default [
     "label": "Messages",
     "icon": "SettingsIcon",
     "content": [
+<<<<<<< HEAD
            {
         "label": "Inbox",
         "description": "Add scrolling areas to any elements with custom scrollbars or default browser ones.",
@@ -91,29 +92,65 @@ export default [
     "content": [
       {
         "label": "All Transactions",
+=======
+      {
+        "label": "Inbox",
+        "description": "Wide selection of buttons that feature different styles for backgrounds, borders and hover options!",
+        "to": "/Buttons"
+      },
+      {
+        "label": "Outbox",
+        "description": "A drop-down list is a graphical control element, similar to a list box, that allows the user to choose one value from a list.",
+        "to": "/Dropdowns"
+      },
+      {
+        "label": "Draft",
+        "description": "Navigation menus are one of the basic building blocks for any web or mobile app.",
+        "to": "/NavigationMenus"
+      },
+    ]
+  },
+  {
+    "label": "Orders",
+    "icon": "ViewModuleIcon",
+    "content": [
+      {
+        "label": "All Orders",
+>>>>>>> 09477a52f89fa1b0e5a59e4a0d888b8de34f8336
         "description": "Wide selection of cards with multiple styles, borders, actions and hover effects.",
         "to": "/Cards3"
       }
     ]
   },
   {
+<<<<<<< HEAD
     "label": "Contacts",
+=======
+    "label": "Refund Requests",
+>>>>>>> 09477a52f89fa1b0e5a59e4a0d888b8de34f8336
     "icon": "ErrorIcon",
     "content": [
       {
-        "label": "Landing page",
+        "label": "Reviews",
         "description": "",
         "to": "/LandingPage"
       }
     ]
   },
+<<<<<<< HEAD
 
   {
     "label": "My Lists",
+=======
+    ]
+  },
+  {
+    "label": "Transactions",
+>>>>>>> 09477a52f89fa1b0e5a59e4a0d888b8de34f8336
     "icon": "CodeIcon",
     "content": [
       {
-        "label": "Tables examples 1",
+        "label": "Overview",
         "description": "Tables are the backbone of almost all web applications.",
         "to": "/RegularTables1"
       },
@@ -125,7 +162,11 @@ export default [
     ]
   },
   {
+<<<<<<< HEAD
     "label": "Orders",
+=======
+    "label": "Manage Accounts",
+>>>>>>> 09477a52f89fa1b0e5a59e4a0d888b8de34f8336
     "icon": "BarChartIcon",
     "content": [
       {
@@ -136,7 +177,7 @@ export default [
     ]
   },
   {
-    "label": "Others",
+    "label": "Transaction Report",
     "icon": "ChatIcon",
     "content": [
       {
@@ -145,12 +186,7 @@ export default [
         "to": "/ApexCharts"
       },
       {
-        "label": "Maps",
-        "description": "Implement in your applications Google or vector maps.",
-        "to": "/Maps"
-      },
-      {
-        "label": "List Groups",
+        "label": "Wire Transfer",
         "description": "These can be used with other components and elements to create stunning and unique new elements for your UIs.",
         "to": "/ListGroups"
       }
