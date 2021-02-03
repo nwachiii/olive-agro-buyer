@@ -1,22 +1,15 @@
 import React, { Fragment } from 'react';
 
-import { PageTitle } from '../../layout-components';
-
-import DashboardDefaultSection4 from '../../example-components/DashboardDefault/DashboardDefaultSection4';
-import PaginationBasic from '../../example-components/Pagination/PaginationBasic';
 import { VStack } from '@chakra-ui/react';
+import Cards8Examples55 from '../../example-components/Cards8/Cards8Examples55';
+import Cards9Examples56 from '../../example-components/Cards9/Cards9Examples56';
 
 export default function DashboardDefault() {
   return (
     <Fragment>
-      <PageTitle
-        titleHeading="Olive-agro"
-        titleDescription="Get personalized notifications here... "
-      />
-
       <VStack spacing="4em" my="4em">
-        <DashboardDefaultSection4 />
-        <PaginationBasic />
+        <Cards8Examples55 />
+        <Cards9Examples56 />
       </VStack>
     </Fragment>
   );

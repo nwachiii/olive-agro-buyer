@@ -10,7 +10,7 @@ export default function LivePreviewExample() {
   return (
     <Fragment>
       <Grid container spacing={4}>
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid item xs={12} md={6} lg={6}>
           <Card className="card-box mb-4 bg-premium-dark border-0 text-light">
             <CardContent className="p-3">
               <div className="align-box-row align-items-start">
@@ -37,7 +37,7 @@ export default function LivePreviewExample() {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} md={6} lg={4}>
+        <Grid item xs={12} md={6} lg={6}>
           <Card className="card-box mb-4 bg-midnight-bloom text-light">
             <CardContent className="p-3">
               <div className="align-box-row align-items-start">
@@ -64,7 +64,7 @@ export default function LivePreviewExample() {
             </CardContent>
           </Card>
         </Grid>
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={12} lg={12}>
           <Card className="card-box mb-4 bg-neutral-info text-dark">
             <CardContent className="p-3">
               <div className="align-box-row align-items-start">

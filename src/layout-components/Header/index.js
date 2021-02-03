@@ -39,7 +39,7 @@ const Header = props => {
           <Hidden lgUp>
             <Box
               className="app-logo-wrapper"
-              title="Olive Agro Seller's Dashboard">
+              title="Olive Agro Buyer's Dashboard">
               <Link to="/DashboardDefault" className="app-logo-link">
                 <IconButton
                   color="primary"
@@ -59,7 +59,7 @@ const Header = props => {
           </Hidden>
           <Hidden smDown>
             <Box className="app-logo-text d-flex align-items-center">
-              SELLER'S DASHBOARD
+              BUYER'S DASHBOARD
             </Box>
           </Hidden>
           <Box className="d-flex align-items-center">
