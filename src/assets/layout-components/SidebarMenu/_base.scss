@@ -1,4 +1,5 @@
 // Core
+
 body {
   .app-sidebar-heading {
     padding: $spacer $spacer ($spacer / 1.1);
@@ -15,7 +16,9 @@ body {
   .app-sidebar-item {
     display: block;
     padding: 2px ($spacer) 1px 0;
+    margin-bottom: 0.3em;
   }
+
 
   .app-sidebar-button {
     padding-top: $spacer / 2.4;
@@ -24,7 +27,7 @@ body {
     justify-content: flex-start;
     text-transform: none;
     border-radius: 0 22px 22px 0;
-    font-size: 15px;
+    font-size: 18px;
     width: 100%;
     font-weight: normal;
     transition: $transition-base;
@@ -34,7 +37,7 @@ body {
     &.active, &.focus,
     &:hover {
       color: #95c53e;
-      background: #ccc;
+      background: #757772;
     }
   }
 
@@ -51,13 +54,12 @@ body {
       font-weight: 500;
     }
 
-    font-size: 14px;
+    font-size: 16px;
       color: #0e9146;
 
-    &.active,&.focus,
+    &:active,&:focus,
     &:hover {
-      background: #ccc;
-          color: #95c53e;
+          color: #333;
 
     }
   }
@@ -83,7 +85,7 @@ body {
   }
 
   .active-item {
-    color: #95c53e;
-    font-weight: 500;
+    color: #333;
+    font-weight: 700;
   }
 }

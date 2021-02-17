@@ -40,117 +40,67 @@ var iconsMap = {
 
 export default [
   {
-    label: 'Navigation menu',
+    label: 'Sidebar navigation',
     content: JSON.parse(
       `[
   {
     "label": "Home",
-    "icon": "DashboardTwoToneIcon",
-    "content": [
-      {
-        "label": "Home",
-        "description": "This is a dashboard page example built using this template.",
-        "to": "/DashboardDefault"
-      }
-    ]
+    "to": "/Home"
   },
   {
-    "label": "Messages",
-    "icon": "SettingsIcon",
-    "content": [
-           {
-        "label": "Inbox",
-        "description": "Add scrolling areas to any elements with custom scrollbars or default browser ones.",
-        "to": "/Scrollable"
-      },
-              {
-        "label": "Sent Messages",
-        "description": "Add scrolling areas to any elements with custom scrollbars or default browser ones.",
-        "to": "/Scrollable"
-      },
-      {
-        "label": "Draft",
-        "description": "Basic and dynamic pagination for use in your next awesome application.",
-        "to": "/Pagination"
-      },
-      {
-        "label": "Navigation menus",
-        "description": "Navigation menus are one of the basic building blocks for any web or mobile app.",
-        "to": "/NavigationMenus"
-      },
-      {
-        "label": "Utilities & Helpers",
-        "description": "These are helpers that speed up the dev time for various components and effects.",
-        "to": "/UtilitiesHelpers"
-      }
-    ]
+    "label": "Inbox",
+        "description": "All your received messages are contained here...",
+        "to": "/Inbox"
   },
   {
-    "label": "Transactions",
-    "icon": "ViewModuleIcon",
-    "content": [
-      {
-        "label": "All Transactions",
-        "description": "Wide selection of cards with multiple styles, borders, actions and hover effects.",
-        "to": "/Cards3"
-      }
-    ]
-  },
+    "label": "All Orders",
+    "to": "/AllOrders"
+  },  
   {
-    "label": "Contacts",
-    "icon": "ErrorIcon",
-    "content": [
-      {
-        "label": "Reviews",
-        "description": "",
-        "to": "/LandingPage"
-      }
-    ]
-  },
-
-  {
-    "label": "My Lists",
+    "label": "Products",
     "icon": "CodeIcon",
     "content": [
       {
-        "label": "Overview",
-        "description": "Tables are the backbone of almost all web applications.",
-        "to": "/RegularTables1"
+        "label": "Fruits and Vegetables",
+        "description": "",
+        "to": "/FruitsVeg"
       },
       {
-        "label": "Tables examples 4",
-        "description": "Tables are the backbone of almost all web applications.",
-        "to": "/RegularTables4"
-      }
-    ]
-  },
-  {
-    "label": "Orders",
-    "icon": "BarChartIcon",
-    "content": [
-      {
-        "label": "Controls",
-        "description": "Wide selection of forms controls, using a standardised code base, specifically for React.",
-        "to": "/FormsControls"
-      }
-    ]
-  },
-  {
-    "label": "Transaction Report",
-    "icon": "ChatIcon",
-    "content": [
-      {
-        "label": "Apex Charts",
-        "description": "Wonderful animated charts built with ApexCharts components.",
-        "to": "/ApexCharts"
+        "label": "Spices",
+        "description": "",
+        "to": "/Spices"
       },
       {
-        "label": "Wire Transfer",
-        "description": "These can be used with other components and elements to create stunning and unique new elements for your UIs.",
-        "to": "/ListGroups"
+        "label": "Drinks",
+        "description": "",
+        "to": "/Drinks"
+      },
+      {
+        "label": "Dry Herbs",
+        "description": "",
+        "to": "/DryHerbs"
+      },
+      {
+        "label": "Legumes",
+        "description": "",
+        "to": "/Legumes"
+      },
+      {
+        "label": "Oils",
+        "description": "",
+        "to": "/Oils"
+      },
+      {
+        "label": "Flours",
+        "description": "",
+        "to": "/Flours"
       }
     ]
-  }
+  }, 
+  {
+        "label": "Customers",
+        "to": "/Customers"
+  } 
 ]`,
       (key, value) => {
         if (key === 'icon') {

@@ -1,0 +1,32 @@
+{
+  "props": [
+    {
+      "_id": "Inquires/Quotations",
+      "headerText": "INQUIRES & QUOTATION",
+      "firstLink": "Unread",
+      "secondLink": "View all",
+      "responseText": "No new messages for now",
+      "responseDescription": "You can view your previous Inquiries and Quotations in Message Center.",
+      "buttonText": "Go to Message Center"
+    },
+    {
+      "_id": "Orders",
+      "headerText": "ORDERS",
+      "firstLink": "Orders In Progress",
+      "secondLink": "View all",
+      "responseText": "No orders yet...",
+      "responseDescription": "Once you have placed a Trade Assurance order, check the status here",
+      "buttonText": "Learn more"
+    },
+    {
+      "_id": "Recommendations",
+      "headerText": "RECOMMENDATIONS",
+      "firstLink": "recommendations",
+      "secondLink": "View all",
+      "responseText": "Team Work!",
+      "responseDescription": "Olive Agro recommends products based on your preferences and favorites. Start personalizing now to get product recommendations.",
+      "buttonText": "Personalize"
+    }
+    
+  ]
+}

@@ -13,7 +13,7 @@ const HeaderLogo = () => {
     <Fragment>
       <div className={clsx('app-header-logo', {})}>
         <Box className="header-logo-wrapper" title="Olive Agro App">
-          <Link to="/DashboardDefault" className="header-logo-wrapper-link">
+          <Link to="/Home" className="header-logo-wrapper-link">
             <IconButton
               color="primary"
               size="medium"

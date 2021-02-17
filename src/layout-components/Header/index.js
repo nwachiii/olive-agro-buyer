@@ -15,6 +15,7 @@ import HeaderUserbox from '../../layout-components/HeaderUserbox';
 
 import MenuOpenRoundedIcon from '@material-ui/icons/MenuOpenRounded';
 import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
+import { Notifications } from '@material-ui/icons';
 
 const Header = props => {
   const toggleSidebarMobile = () => {
@@ -39,8 +40,8 @@ const Header = props => {
           <Hidden lgUp>
             <Box
               className="app-logo-wrapper"
-              title="Olive Agro Buyer's Dashboard">
-              <Link to="/" className="app-logo-link">
+              title="Olive Agro Amin's Dashboard">
+              <Link to="/Home" className="app-logo-link">
                 <IconButton
                   color="primary"
                   size="medium"
@@ -59,10 +60,11 @@ const Header = props => {
           </Hidden>
           <Hidden smDown>
             <Box className="app-logo-text d-flex align-items-center">
-              SELLER'S DASHBOARD
+              VENDOR'S DASHBOARD
             </Box>
           </Hidden>
           <Box className="d-flex align-items-center">
+            <Notifications style={{ color: '#95c53e', cursor: 'pointer' }} />
             <HeaderUserbox />
             <Box className="toggle-sidebar-btn-mobile">
               <Tooltip title="Toggle Sidebar" placement="right">

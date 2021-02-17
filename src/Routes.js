@@ -13,20 +13,29 @@ import { LeftSidebar, PresentationLayout } from './layout-blueprints';
 // Example Pages
 
 import Buttons from './example-pages/Buttons';
-import Dropdowns from './example-pages/Dropdowns';
 import NavigationMenus from './example-pages/NavigationMenus';
-import ProgressBars from './example-pages/ProgressBars';
 import Pagination from './example-pages/Pagination';
-import Scrollable from './example-pages/Scrollable';
+import Inbox from './layout-components/Inbox';
 import Badges from './example-pages/Badges';
 import Icons from './example-pages/Icons';
 import UtilitiesHelpers from './example-pages/UtilitiesHelpers';
 import RegularTables1 from './example-pages/RegularTables1';
 import RegularTables4 from './example-pages/RegularTables4';
-import FormsControls from './example-pages/FormsControls';
+import AllOrders from './layout-components/OliveOrders/AllOrders';
+import AddCategory from './layout-components/Products/AddCategory';
+import FruitsVeg from './layout-components/Products/FruitsVeg';
+import Drinks from './layout-components/Products/Drinks';
+import Spices from './layout-components/Products/Spices';
+import DryHerbs from './layout-components/Products/DryHerbs';
+import Legumes from './layout-components/Products/Legumes';
+import Flours from './layout-components/Products/Flours';
+import Oils from './layout-components/Products/Oils';
+import Customers from './layout-components/ViewUsers/Customers';
+import PendingVendors from './layout-components/ViewUsers/Vendors/PendingVendors';
+import RegisteredVendors from './layout-components/ViewUsers/Vendors/RegisteredVendors';
 
-const DashboardDefault = lazy(() => import('./example-pages/DashboardDefault'));
-const Cards3 = lazy(() => import('./example-pages/Cards3'));
+const Home = lazy(() => import('./layout-components/Home'));
+const Cards3 = lazy(() => import('./example-components/Cards3'));
 const LandingPage = lazy(() => import('./example-pages/LandingPage'));
 const Accordions = lazy(() => import('./example-pages/Accordions'));
 const Modals = lazy(() => import('./example-pages/Modals'));
@@ -58,7 +67,7 @@ const Routes = () => {
   const pageTransition = {
     type: 'tween',
     ease: 'anticipate',
-    duration: 0.4
+    duration: 0.7
   };
 
   return (
@@ -73,7 +82,7 @@ const Routes = () => {
             </div>
           }>
           <Switch>
-            <Redirect exact from="/" to="/DashboardDefault" />
+            <Redirect exact from="/" to="/Home" />
             <Route path={['/LandingPage']}>
               <PresentationLayout>
                 <Switch location={location} key={location.pathname}>
@@ -91,28 +100,27 @@ const Routes = () => {
 
             <Route
               path={[
-                '/DashboardDefault',
+                '/Home',
                 '/Buttons',
                 '/Dropdowns',
                 '/NavigationMenus',
-                '/ProgressBars',
                 '/Pagination',
-                '/Scrollable',
-                '/Badges',
-                '/Icons',
-                '/UtilitiesHelpers',
-                '/Cards3',
-                '/Accordions',
-                '/Modals',
+                '/Inbox',
+                '/AddCategory',
+                '/FruitsVeg',
+                '/Spices',
+                '/Drinks',
+                '/DryHerbs',
+                '/Legumes',
+                '/Oils',
+                '/Flours',
+                '/PendingVendors',
+                '/RegisteredVendors',
+                '/Customers',
                 '/Notifications',
                 '/Popovers',
                 '/Tabs',
-                '/RegularTables1',
-                '/RegularTables4',
-                '/FormsControls',
-                '/ApexCharts',
-                '/Maps',
-                '/ListGroups'
+                '/AllOrders'
               ]}>
               <LeftSidebar>
                 <Switch location={location} key={location.pathname}>
@@ -122,19 +130,14 @@ const Routes = () => {
                     exit="out"
                     variants={pageVariants}
                     transition={pageTransition}>
-                    <Route
-                      path="/DashboardDefault"
-                      component={DashboardDefault}
-                    />
+                    <Route path="/Home" component={Home} />
                     <Route path="/Buttons" component={Buttons} />
-                    <Route path="/Dropdowns" component={Dropdowns} />
                     <Route
                       path="/NavigationMenus"
                       component={NavigationMenus}
                     />
-                    <Route path="/ProgressBars" component={ProgressBars} />
                     <Route path="/Pagination" component={Pagination} />
-                    <Route path="/Scrollable" component={Scrollable} />
+                    <Route path="/Inbox" component={Inbox} />
                     <Route path="/Badges" component={Badges} />
                     <Route path="/Icons" component={Icons} />
                     <Route
@@ -149,7 +152,21 @@ const Routes = () => {
                     <Route path="/Tabs" component={Tabs} />
                     <Route path="/RegularTables1" component={RegularTables1} />
                     <Route path="/RegularTables4" component={RegularTables4} />
-                    <Route path="/FormsControls" component={FormsControls} />
+                    <Route path="/AllOrders" component={AllOrders} />
+                    <Route path="/AddCategory" component={AddCategory} />
+                    <Route path="/FruitsVeg" component={FruitsVeg} />
+                    <Route path="/Spices" component={Spices} />
+                    <Route path="/Drinks" component={Drinks} />
+                    <Route path="/DryHerbs" component={DryHerbs} />
+                    <Route path="/Legumes" component={Legumes} />
+                    <Route path="/Oils" component={Oils} />
+                    <Route path="/Flours" component={Flours} />
+                    <Route path="/PendingVendors" component={PendingVendors} />
+                    <Route
+                      path="/RegisteredVendors"
+                      component={RegisteredVendors}
+                    />
+                    <Route path="/Customers" component={Customers} />
                     <Route path="/ApexCharts" component={ApexCharts} />
                     <Route path="/Maps" component={Maps} />
                     <Route path="/ListGroups" component={ListGroups} />

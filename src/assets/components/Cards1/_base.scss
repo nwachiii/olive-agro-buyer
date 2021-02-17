@@ -13,7 +13,7 @@ button.card {
 }
 
 .card-text {
-  color: $gray-800;
+  color: #333;
 }
 
 .card-box-alt {
@@ -58,6 +58,7 @@ button.card {
 
 .card-box {
   border-width: 1px;
+
   .card-footer,
   .card-header {
     border-width: 1px;

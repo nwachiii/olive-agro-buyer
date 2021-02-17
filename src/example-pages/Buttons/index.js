@@ -3,8 +3,6 @@ import React, { Fragment } from 'react';
 import { PageTitle } from '../../layout-components';
 import { Grid } from '@material-ui/core';
 
-import { ExampleWrapperSimple } from '../../layout-components';
-
 import ButtonsBasic from '../../example-components/Buttons/ButtonsBasic';
 import ButtonsGroups from '../../example-components/Buttons/ButtonsGroups';
 import ButtonsGroupsSizing from '../../example-components/Buttons/ButtonsGroupsSizing';
@@ -22,35 +20,25 @@ export default function Buttons() {
 
       <Grid container spacing={4}>
         <Grid item xs={12} lg={6}>
-          <ExampleWrapperSimple sectionHeading="Basic">
-            <ButtonsBasic />
-            <div className="divider my-2" />
-            <ButtonsSizing />
-          </ExampleWrapperSimple>
+          <ButtonsBasic />
+          <div className="divider my-2" />
+          <ButtonsSizing />
         </Grid>
         <Grid item xs={12} lg={6}>
-          <ExampleWrapperSimple sectionHeading="Button groups">
-            <div className="text-center">
-              <ButtonsGroups />
-              <div className="divider my-2" />
-              <ButtonsGroupsSizing />
-            </div>
-          </ExampleWrapperSimple>
+          <div className="text-center">
+            <ButtonsGroups />
+            <div className="divider my-2" />
+            <ButtonsGroupsSizing />
+          </div>
         </Grid>
         <Grid item xs={12}>
-          <ExampleWrapperSimple sectionHeading="Colors">
-            <ButtonsColors />
-          </ExampleWrapperSimple>
+          <ButtonsColors />
         </Grid>
       </Grid>
 
-      <ExampleWrapperSimple sectionHeading="Links">
-        <ButtonsLinks />
-      </ExampleWrapperSimple>
+      <ButtonsLinks />
 
-      <ExampleWrapperSimple sectionHeading="Outline">
-        <ButtonsOutline />
-      </ExampleWrapperSimple>
+      <ButtonsOutline />
     </Fragment>
   );
 }

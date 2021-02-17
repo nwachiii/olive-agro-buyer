@@ -26,7 +26,7 @@ const Sidebar = props => {
   const closeDrawer = () => setSidebarToggleMobile(!sidebarToggleMobile);
 
   const sidebarMenuContent = (
-    <div>
+    <div className="">
       {navItems.map(list => (
         <SidebarMenu
           component="div"
