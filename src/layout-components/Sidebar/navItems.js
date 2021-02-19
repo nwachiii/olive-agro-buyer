@@ -78,7 +78,7 @@ export default [
       {
         "label": "Add new product(s)",
         "description": "",
-        "to": "/DryHerbs"
+        "to": "/NewProduct"
       }
     ]
   }

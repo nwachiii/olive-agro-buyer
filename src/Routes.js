@@ -25,6 +25,7 @@ import AllOrders from './layout-components/OliveOrders/AllOrders';
 import AllProducts from './layout-components/Products/AllProducts';
 import DeleteProducts from './layout-components/Products/DeleteProducts';
 import ChangeProducts from './layout-components/Products/ChangeProducts';
+import NewProduct from './layout-components/Products/AddNewProduct';
 import AddCategory from './layout-components/Products/AddCategory';
 import FruitsVeg from './layout-components/Products/FruitsVeg';
 import Drinks from './layout-components/Products/Drinks';
@@ -112,6 +113,7 @@ const Routes = () => {
                 '/AllProducts',
                 '/DeleteProducts',
                 '/ChangeProducts',
+                '/NewProduct',
                 '/AddCategory',
                 '/FruitsVeg',
                 '/Spices',
@@ -162,6 +164,7 @@ const Routes = () => {
                     <Route path="/AllProducts" component={AllProducts} />
                     <Route path="/DeleteProducts" component={DeleteProducts} />
                     <Route path="/ChangeProducts" component={ChangeProducts} />
+                    <Route path="/NewProduct" component={NewProduct} />
                     <Route path="/AddCategory" component={AddCategory} />
                     <Route path="/FruitsVeg" component={FruitsVeg} />
                     <Route path="/Spices" component={Spices} />

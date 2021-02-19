@@ -32,11 +32,11 @@ function DeleteProducts() {
             titleHeading="Delete Products"
             titleDescription="Available Categories include: Dry herbs, Flours, Fruits and Vegetables, Drinks, Legumes, Oils, and Spices "
           />
-          <DryHerbs ButtonText="Delete" />
-          <Flours ButtonText="Delete" />
-          <FruitsVeg ButtonText="Delete" />
-          <Drinks ButtonText="Delete" />
           <Legumes ButtonText="Delete" />
+          <DryHerbs ButtonText="Delete" />
+          <FruitsVeg ButtonText="Delete" />
+          <Flours ButtonText="Delete" />
+          <Drinks ButtonText="Delete" />
           <Oils ButtonText="Delete" />
           <Spices ButtonText="Delete" />
         </Box>
