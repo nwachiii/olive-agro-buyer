@@ -25,7 +25,7 @@ export default function HeaderUserbox() {
     setAnchorEl(null);
   };
 
-  const userName = 'Daudu Gbenga';
+  const userName = 'Ishola Farms';
   return (
     <Fragment>
       <Button
@@ -38,11 +38,10 @@ export default function HeaderUserbox() {
               Hi, {userName}{' '}
             </h6>
           </Hidden>
-          <Avatar sizes="44" alt="Daudu Gbenga" src={Avatar} />
+          <Avatar sizes="44" alt="Ishola Farms" src={Avatar} />
         </Box>
         <div className="d-none d-xl-block pl-3">
           <div className="font-weight-bold pt-2 line-height-1">{userName}</div>
-          <span className="text-white-50">Agricultural Engineer</span>
         </div>
         <span className="pl-1 pl-xl-3">
           <FontAwesomeIcon icon={['fas', 'angle-down']} className="opacity-5" />
@@ -67,18 +66,15 @@ export default function HeaderUserbox() {
         <div className="dropdown-menu-right dropdown-menu-lg overflow-hidden p-3">
           <List className="text-left bg-transparent d-flex align-items-center flex-column pt-0">
             <Box>
-              <Avatar sizes="44" alt="Daudu Gbenga" src={Avatar} />
+              <Avatar sizes="44" alt="Ishola_Farms" src={Avatar} />
             </Box>
             <div className="pl-3  pr-3">
               <div className="font-weight-bold text-center pt-2 pb-1 line-height-1">
                 {userName}
               </div>
-              <span className="text-black-80 text-center pt-2">
-                Agricultural Engineer
-              </span>
             </div>
             <Divider className="w-100 mt-2" />
-            <ListItem button>My Account</ListItem>
+            <ListItem button>Account</ListItem>
             <ListItem button>Profile settings</ListItem>
             <ListItem button>Active sales</ListItem>
             <Divider className="w-100 my-2" />

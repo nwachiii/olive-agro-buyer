@@ -10,7 +10,7 @@ import React from 'react';
 
 import stock1 from '../../assets/images/stock-photos/stock-1.jpg';
 
-function ShowProducts({ products }) {
+function ShowProducts({ products, ButtonText }) {
   return (
     <Grid container spacing={4}>
       {products.map(product => (
@@ -26,8 +26,10 @@ function ShowProducts({ products }) {
                 PRICE: <strong>{product.price}</strong>
               </p>
               <ButtonGroup>
-                <Button color="secondary" size="large" variant="contained">
-                  Add to Cart
+                <Button
+                  size="large"
+                  style={{ color: 'white', backgroundColor: '#0e9146' }}>
+                  {ButtonText}
                 </Button>
               </ButtonGroup>
             </CardContent>

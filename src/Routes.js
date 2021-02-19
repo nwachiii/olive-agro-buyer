@@ -22,6 +22,9 @@ import UtilitiesHelpers from './example-pages/UtilitiesHelpers';
 import RegularTables1 from './example-pages/RegularTables1';
 import RegularTables4 from './example-pages/RegularTables4';
 import AllOrders from './layout-components/OliveOrders/AllOrders';
+import AllProducts from './layout-components/Products/AllProducts';
+import DeleteProducts from './layout-components/Products/DeleteProducts';
+import ChangeProducts from './layout-components/Products/ChangeProducts';
 import AddCategory from './layout-components/Products/AddCategory';
 import FruitsVeg from './layout-components/Products/FruitsVeg';
 import Drinks from './layout-components/Products/Drinks';
@@ -106,6 +109,9 @@ const Routes = () => {
                 '/NavigationMenus',
                 '/Pagination',
                 '/Inbox',
+                '/AllProducts',
+                '/DeleteProducts',
+                '/ChangeProducts',
                 '/AddCategory',
                 '/FruitsVeg',
                 '/Spices',
@@ -153,6 +159,9 @@ const Routes = () => {
                     <Route path="/RegularTables1" component={RegularTables1} />
                     <Route path="/RegularTables4" component={RegularTables4} />
                     <Route path="/AllOrders" component={AllOrders} />
+                    <Route path="/AllProducts" component={AllProducts} />
+                    <Route path="/DeleteProducts" component={DeleteProducts} />
+                    <Route path="/ChangeProducts" component={ChangeProducts} />
                     <Route path="/AddCategory" component={AddCategory} />
                     <Route path="/FruitsVeg" component={FruitsVeg} />
                     <Route path="/Spices" component={Spices} />

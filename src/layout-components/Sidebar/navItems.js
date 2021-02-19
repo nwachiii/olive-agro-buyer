@@ -61,46 +61,27 @@ export default [
     "icon": "CodeIcon",
     "content": [
       {
-        "label": "Fruits and Vegetables",
+        "label": "All Products",
         "description": "",
-        "to": "/FruitsVeg"
+        "to": "/AllProducts"
       },
       {
-        "label": "Spices",
+        "label": "Delete product(s)",
         "description": "",
-        "to": "/Spices"
+        "to": "/DeleteProducts"
       },
       {
-        "label": "Drinks",
+        "label": "Change product(s)",
         "description": "",
-        "to": "/Drinks"
+        "to": "/ChangeProducts"
       },
       {
-        "label": "Dry Herbs",
+        "label": "Add new product(s)",
         "description": "",
         "to": "/DryHerbs"
-      },
-      {
-        "label": "Legumes",
-        "description": "",
-        "to": "/Legumes"
-      },
-      {
-        "label": "Oils",
-        "description": "",
-        "to": "/Oils"
-      },
-      {
-        "label": "Flours",
-        "description": "",
-        "to": "/Flours"
       }
     ]
-  }, 
-  {
-        "label": "Customers",
-        "to": "/Customers"
-  } 
+  }
 ]`,
       (key, value) => {
         if (key === 'icon') {

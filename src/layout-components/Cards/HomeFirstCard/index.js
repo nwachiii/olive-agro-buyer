@@ -26,7 +26,7 @@ export default function HomeFirstCard() {
                 <Avatar src="/broken-image.jpg" />
               </a>
               <div className="flex-grow-1 mt-4">
-                <h1 className="text-black-40">Daudu</h1>
+                <h1 className="text-black-40">Ishola Farms</h1>
                 <a className="text-black-50 pt-2" href="/#">
                   <h5>View Profile</h5>
                 </a>
