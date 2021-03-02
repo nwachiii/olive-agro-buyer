@@ -1,10 +1,10 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 
-import { PageTitle } from '..';
+import PageTitle from "../PageTitle";
 
-import { ExampleWrapperSeamless } from '..';
+import ExampleWrapperSeamless from "./ExampleWrapperSeamless";
 
-import InboxBasic from '../../example-components/Inbox/InboxBasic';
+import InboxBasic from "./InboxBasic";
 export default function Inbox() {
   return (
     <Fragment>

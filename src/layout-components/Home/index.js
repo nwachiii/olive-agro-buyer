@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
-import { VStack } from '@chakra-ui/react';
+import React, { Fragment } from "react";
+import { VStack } from "@chakra-ui/react";
 
-import { PageTitle } from '..';
+import { PageTitle } from "..";
 
-import PaginationBasic from '../../example-components/Pagination/PaginationBasic';
-import HomeFirstCard from '../Cards/HomeFirstCard';
-import OtherHomeCards from '../Cards/OtherHomeCards';
+import PaginationBasic from "./PaginationBasic";
+import HomeFirstCard from "../Cards/HomeFirstCard";
+import OtherHomeCards from "../Cards/OtherHomeCards";
 
 export default function Home() {
   return (

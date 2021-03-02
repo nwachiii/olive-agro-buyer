@@ -1,23 +1,23 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 
-import clsx from 'clsx';
-import { Link } from 'react-router-dom';
+import clsx from "clsx";
+import { Link } from "react-router-dom";
 
-import { Hidden, IconButton, AppBar, Box, Tooltip } from '@material-ui/core';
+import { Hidden, IconButton, AppBar, Box, Tooltip } from "@material-ui/core";
 
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
-import { setSidebarToggleMobile } from '../../reducers/ThemeOptions';
-import projectLogo from '../../assets/images/Asset 3.png';
+import { setSidebarToggleMobile } from "../../redux/reducers/ThemeOptions";
+import projectLogo from "../../assets/images/Asset 3.png";
 
-import HeaderLogo from '../../layout-components/HeaderLogo';
-import HeaderUserbox from '../../layout-components/HeaderUserbox';
+import HeaderLogo from "../../layout-components/HeaderLogo";
+import HeaderUserbox from "../../layout-components/HeaderUserbox";
 
-import MenuOpenRoundedIcon from '@material-ui/icons/MenuOpenRounded';
-import MenuRoundedIcon from '@material-ui/icons/MenuRounded';
-import { Notifications } from '@material-ui/icons';
+import MenuOpenRoundedIcon from "@material-ui/icons/MenuOpenRounded";
+import MenuRoundedIcon from "@material-ui/icons/MenuRounded";
+import { Notifications } from "@material-ui/icons";
 
-const Header = props => {
+const Header = (props) => {
   const toggleSidebarMobile = () => {
     setSidebarToggleMobile(!sidebarToggleMobile);
   };
@@ -25,27 +25,30 @@ const Header = props => {
     headerShadow,
     headerFixed,
     sidebarToggleMobile,
-    setSidebarToggleMobile
+    setSidebarToggleMobile,
   } = props;
 
   return (
     <Fragment>
       <AppBar
         color="secondary"
-        className={clsx('app-header', {})}
-        position={headerFixed ? 'fixed' : 'absolute'}
-        elevation={headerShadow ? 11 : 3}>
+        className={clsx("app-header", {})}
+        position={headerFixed ? "fixed" : "absolute"}
+        elevation={headerShadow ? 11 : 3}
+      >
         {!props.isCollapsedLayout && <HeaderLogo />}
         <Box className="app-header-toolbar">
           <Hidden lgUp>
             <Box
               className="app-logo-wrapper"
-              title="Olive Agro Amin's Dashboard">
+              title="Olive Agro Amin's Dashboard"
+            >
               <Link to="/Home" className="app-logo-link">
                 <IconButton
                   color="primary"
                   size="medium"
-                  className="app-logo-btn">
+                  className="app-logo-btn"
+                >
                   <img
                     className="app-logo-img"
                     alt="olive agro project"
@@ -64,14 +67,15 @@ const Header = props => {
             </Box>
           </Hidden>
           <Box className="d-flex align-items-center">
-            <Notifications style={{ color: '#95c53e', cursor: 'pointer' }} />
+            <Notifications style={{ color: "#95c53e", cursor: "pointer" }} />
             <HeaderUserbox />
             <Box className="toggle-sidebar-btn-mobile">
               <Tooltip title="Toggle Sidebar" placement="right">
                 <IconButton
                   color="inherit"
                   onClick={toggleSidebarMobile}
-                  size="medium">
+                  size="medium"
+                >
                   {sidebarToggleMobile ? (
                     <MenuOpenRoundedIcon />
                   ) : (
@@ -87,14 +91,14 @@ const Header = props => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   headerShadow: state.ThemeOptions.headerShadow,
   headerFixed: state.ThemeOptions.headerFixed,
-  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile
+  sidebarToggleMobile: state.ThemeOptions.sidebarToggleMobile,
 });
 
-const mapDispatchToProps = dispatch => ({
-  setSidebarToggleMobile: enable => dispatch(setSidebarToggleMobile(enable))
+const mapDispatchToProps = (dispatch) => ({
+  setSidebarToggleMobile: (enable) => dispatch(setSidebarToggleMobile(enable)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
