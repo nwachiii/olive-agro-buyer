@@ -5,11 +5,18 @@ import {
   FETCH_PRODUCTS_FAILURE,
 } from "./productTypes";
 
-export const fetchUsers = () => {
+export const fetchProducts = () => {
+  const token = localStorage.getItem("token");
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
   return (dispatch) => {
     dispatch(fetchProductsRequest());
     axios
-      .get("https://www.api.oliveagro.org/api/product/list/all")
+      .get("https://www.api.oliveagro.org/api/product/list/all", config)
       .then((response) => {
         // response.data is the products
         const products = response.data;
