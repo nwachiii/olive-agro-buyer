@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { connect } from "react-redux";
 import {
   Select,
   FormControl,
@@ -10,54 +11,69 @@ import {
   Divider,
   Button,
   InputAdornment,
-  OutlinedInput
-} from '@material-ui/core';
+  OutlinedInput,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
-import { makeStyles } from '@material-ui/core/styles';
-import ImageUpload from './ImageUpload';
+//components
+import { addProduct } from "../../../redux";
+import ImageUpload from "./ImageUpload";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120
+    minWidth: 120,
   },
   margin: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
   selectEmpty: {
-    marginTop: theme.spacing(2)
-  }
+    marginTop: theme.spacing(2),
+  },
 }));
 
 function AddNewProduct() {
   const classes = useStyles();
-  const [products, setProducts] = useState([]);
-  const [product, setProduct] = useState('');
-  const [values, setValues] = useState({
-    price: ''
-  });
+  const [product, setProduct] = useState([
+    {
+      product_name: "",
+      product_category: "",
+      product_price: "",
+      product_img: "",
+    },
+  ]);
 
-  const handlePriceChange = prop => event => {
-    setValues({ ...values, [prop]: event.target.value });
+  // const handlePriceChange = (prop) => (event) => {
+  //   setProduct({
+  //     ...product.product_price,
+  //     [prop]: event.target.value,
+  //   });
+  // };
+
+  const handleInputChange = (event) => {
+    const {
+      target: { name, value },
+    } = event;
+    setProduct({ [name]: value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    const newProduct = {
-      id: new Date().getTime(),
-      text: product
-    };
-
-    setProducts([...products].concat(newProduct));
-    setProduct('');
+    addProduct(product);
+    setProduct([
+      {
+        product_name: "",
+        product_category: "",
+        product_price: "",
+        product_img: "",
+      },
+    ]);
   };
 
-  const [category, setCategory] = useState('');
+  // const handleCategoryChange = (event) => {
+  //   setProduct(event.target.value);
+  // };
 
-  const handleChange = event => {
-    setCategory(event.target.value);
-  };
   return (
     <Grid container spacing={4}>
       <Grid item xs={12} lg={6}>
@@ -68,7 +84,8 @@ function AddNewProduct() {
             <Grid item xs={12} lg={12} spacing={6}>
               <form
                 onSubmit={handleSubmit}
-                className="d-flex p-3 flex-wrap direction-column">
+                className="d-flex p-3 flex-wrap direction-column"
+              >
                 <Grid xs={12} lg={6}>
                   <TextField
                     fullWidth
@@ -76,24 +93,27 @@ function AddNewProduct() {
                     id="outlined-basic"
                     label="Product name"
                     variant="outlined"
-                    onChange={e => setProduct(e.target.value)}
-                    value={product}
+                    onChange={handleInputChange}
+                    value={product.product_name}
                   />
                 </Grid>
                 <Grid xs={12} lg={6} className="mx-2">
                   <FormControl
                     variant="outlined"
-                    className={classes.formControl}>
+                    className={classes.formControl}
+                  >
                     <InputLabel
                       id="demo-simple-select-filled-label"
-                      labelWidth={60}>
+                      labelWidth={100}
+                    >
                       Select Category
                     </InputLabel>
                     <Select
                       labelId="demo-simple-select-filled-label"
                       id="demo-simple-select-filled"
-                      value={category}
-                      onChange={handleChange}>
+                      value={product.product_category}
+                      onChange={handleInputChange}
+                    >
                       <MenuItem value="">
                         <em>None</em>
                       </MenuItem>
@@ -110,14 +130,15 @@ function AddNewProduct() {
                 <FormControl
                   fullWidth
                   className={classes.margin}
-                  variant="outlined">
+                  variant="outlined"
+                >
                   <InputLabel htmlFor="outlined-adornment-amount">
                     Price
                   </InputLabel>
                   <OutlinedInput
                     id="outlined-adornment-amount"
-                    value={values.price}
-                    onChange={handlePriceChange('price')}
+                    value={product.product_price}
+                    onChange={handleInputChange}
                     startAdornment={
                       <InputAdornment position="start">#</InputAdornment>
                     }
@@ -133,10 +154,12 @@ function AddNewProduct() {
                   variant="contained"
                   type="submit"
                   style={{
-                    color: 'white',
-                    backgroundColor: '#0e9146',
-                    width: '100%'
-                  }}>
+                    color: "white",
+                    backgroundColor: "#0e9146",
+                    width: "100%",
+                  }}
+                  onClick={handleSubmit}
+                >
                   Submit
                 </Button>
               </form>
@@ -148,4 +171,5 @@ function AddNewProduct() {
   );
 }
 
-export default AddNewProduct;
+// export default AddNewProduct;
+export default connect(null, { addProduct })(AddNewProduct);

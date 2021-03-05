@@ -48,7 +48,7 @@ function AllProducts() {
 
 export default AllProducts;
 
-//Use the code below as a guide to consume products in each category; use the filter method(if category_name === category name ? display the response else display null)
+//Use the code below as a guide to consume products in each category; In each category, use the filter method(if category_name === category name ? display the response else display null)
 // import React, { useEffect } from "react";
 // import { connect } from "react-redux";
 // import { fetchUsers } from "../redux";
