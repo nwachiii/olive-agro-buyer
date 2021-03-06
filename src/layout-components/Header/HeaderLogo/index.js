@@ -1,23 +1,24 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
 
-import clsx from 'clsx';
-import { Link } from 'react-router-dom';
+import clsx from "clsx";
+import { Link } from "react-router-dom";
 
-import { IconButton, Box } from '@material-ui/core';
+import { IconButton, Box } from "@material-ui/core";
 
-import projectLogo from '../../assets/images/Asset 2.png';
-import headerText from '../../assets/images/Asset 4.png';
+import projectLogo from "../../../assets/images/Asset 2.png";
+import headerText from "../../../assets/images/Asset 4.png";
 
 const HeaderLogo = () => {
   return (
     <Fragment>
-      <div className={clsx('app-header-logo', {})}>
+      <div className={clsx("app-header-logo", {})}>
         <Box className="header-logo-wrapper" title="Olive Agro App">
           <Link to="/Home" className="header-logo-wrapper-link">
             <IconButton
               color="primary"
               size="medium"
-              className="header-logo-wrapper-btn">
+              className="header-logo-wrapper-btn"
+            >
               <img
                 className="app-header-logo-img"
                 alt="Olive Agro "

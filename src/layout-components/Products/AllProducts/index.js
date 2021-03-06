@@ -3,7 +3,7 @@ import React from "react";
 import { Container, makeStyles } from "@material-ui/core";
 
 //components
-import Page from "../../Page";
+import Page from "../../PageTitle/Page";
 // import Drinks from "../Drinks";
 // import DryHerbs from "../DryHerbs";
 // import FruitsVeg from "../FruitsVeg";
