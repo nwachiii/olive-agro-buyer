@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 // import moment from 'moment';
-import PerfectScrollbar from 'react-perfect-scrollbar';
+import PerfectScrollbar from "react-perfect-scrollbar";
 import {
   Avatar,
   Box,
@@ -17,16 +17,16 @@ import {
   Typography,
   makeStyles,
   DialogContentText,
-  Button
-} from '@material-ui/core';
-import getInitials from '../../../../utils/getInitials';
-import { VendorModal } from '../VendorModal';
+  Button,
+} from "@material-ui/core";
+import getInitials from "../../../utils/getInitials";
+import { VendorModal } from "../VendorModal";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {},
   avatar: {
-    marginRight: theme.spacing(2)
-  }
+    marginRight: theme.spacing(2),
+  },
 }));
 
 const Results = ({ className, PendingVendors, ...rest }) => {
@@ -35,9 +35,9 @@ const Results = ({ className, PendingVendors, ...rest }) => {
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
   const [open3, setOpen3] = useState(false);
-  const [scroll, setScroll] = useState('paper');
+  const [scroll, setScroll] = useState("paper");
 
-  const handleClickOpen3 = scrollType => () => {
+  const handleClickOpen3 = (scrollType) => () => {
     setOpen3(true);
     setScroll(scrollType);
   };
@@ -56,12 +56,12 @@ const Results = ({ className, PendingVendors, ...rest }) => {
     }
   }, [open3]);
 
-  const handleSelectAll = event => {
+  const handleSelectAll = (event) => {
     let newSelectedPendingVendorIds;
 
     if (event.target.checked) {
       newSelectedPendingVendorIds = PendingVendors.map(
-        PendingVendor => PendingVendor.id
+        (PendingVendor) => PendingVendor.id
       );
     } else {
       newSelectedPendingVendorIds = [];
@@ -97,7 +97,7 @@ const Results = ({ className, PendingVendors, ...rest }) => {
     setSelectedPendingVendorIds(newSelectedPendingVendorIds);
   };
 
-  const handleLimitChange = event => {
+  const handleLimitChange = (event) => {
     setLimit(event.target.value);
   };
 
@@ -133,20 +133,21 @@ const Results = ({ className, PendingVendors, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {PendingVendors.slice(0, limit).map(PendingVendor => (
+              {PendingVendors.slice(0, limit).map((PendingVendor) => (
                 <TableRow
                   hover
                   key={PendingVendor.id}
                   selected={
                     selectedPendingVendorIds.indexOf(PendingVendor.id) !== -1
-                  }>
+                  }
+                >
                   <TableCell padding="checkbox">
                     <Checkbox
                       checked={
                         selectedPendingVendorIds.indexOf(PendingVendor.id) !==
                         -1
                       }
-                      onChange={event =>
+                      onChange={(event) =>
                         handleSelectOne(event, PendingVendor.id)
                       }
                       value="true"
@@ -156,7 +157,8 @@ const Results = ({ className, PendingVendors, ...rest }) => {
                     <Box alignItems="center" display="flex">
                       <Avatar
                         className={classes.avatar}
-                        src={PendingVendor.avatarUrl}>
+                        src={PendingVendor.avatarUrl}
+                      >
                         {getInitials(PendingVendor.companyName)}
                       </Avatar>
                       <Typography color="textPrimary" variant="body1">
@@ -180,9 +182,10 @@ const Results = ({ className, PendingVendors, ...rest }) => {
                     }
                     <Button
                       key={PendingVendor.id}
-                      onClick={handleClickOpen3('paper')}
+                      onClick={handleClickOpen3("paper")}
                       color="secondary"
-                      variant="contained">
+                      variant="contained"
+                    >
                       see more...
                     </Button>
                   </TableCell>
@@ -207,7 +210,7 @@ const Results = ({ className, PendingVendors, ...rest }) => {
 
 Results.propTypes = {
   className: PropTypes.string,
-  PendingVendors: PropTypes.array.isRequired
+  PendingVendors: PropTypes.array.isRequired,
 };
 
 export default Results;

@@ -18,8 +18,8 @@ import AllProducts from "./layout-components/Products/AllProducts";
 import DeleteProducts from "./layout-components/Products/DeleteProducts";
 import ChangeProducts from "./layout-components/Products/ChangeProducts";
 import NewProduct from "./layout-components/Products/AddNewProduct";
-import PendingVendors from "./layout-components/ViewUsers/Vendors/PendingVendors";
-import RegisteredVendors from "./layout-components/ViewUsers/Vendors/RegisteredVendors";
+import PendingVendors from "./layout-components/Vendors/PendingVendors";
+import RegisteredVendors from "./layout-components/Vendors/RegisteredVendors";
 
 const Home = lazy(() => import("./layout-components/Home"));
 

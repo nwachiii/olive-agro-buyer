@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Box, Container, makeStyles } from "@material-ui/core";
-import Page from "../../../PageTitle/Page";
-import Toolbar from "../../../Toolbar";
+import Page from "../../PageTitle/Page";
+import Toolbar from "../../Toolbar";
 import Results from "./Results";
 import data from "./data";
 

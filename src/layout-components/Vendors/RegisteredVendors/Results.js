@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
 // import moment from 'moment';
-import PerfectScrollbar from 'react-perfect-scrollbar';
+import PerfectScrollbar from "react-perfect-scrollbar";
 import {
   Avatar,
   Box,
@@ -15,23 +15,23 @@ import {
   TablePagination,
   TableRow,
   Typography,
-  makeStyles
-} from '@material-ui/core';
-import getInitials from '../../../../utils/getInitials';
+  makeStyles,
+} from "@material-ui/core";
+import getInitials from "../../../utils/getInitials";
 // import { VendorModal } from '../VendorModal';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {},
   avatar: {
-    marginRight: theme.spacing(2)
-  }
+    marginRight: theme.spacing(2),
+  },
 }));
 
 const Results = ({ className, RegisteredVendors, ...rest }) => {
   const classes = useStyles();
   const [
     selectedRegisteredVendorIds,
-    setSelectedRegisteredVendorIds
+    setSelectedRegisteredVendorIds,
   ] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
@@ -57,12 +57,12 @@ const Results = ({ className, RegisteredVendors, ...rest }) => {
     }
   }, [open3]);
 
-  const handleSelectAll = event => {
+  const handleSelectAll = (event) => {
     let newSelectedRegisteredVendorIds;
 
     if (event.target.checked) {
       newSelectedRegisteredVendorIds = RegisteredVendors.map(
-        RegisteredVendor => RegisteredVendor.id
+        (RegisteredVendor) => RegisteredVendor.id
       );
     } else {
       newSelectedRegisteredVendorIds = [];
@@ -98,7 +98,7 @@ const Results = ({ className, RegisteredVendors, ...rest }) => {
     setSelectedRegisteredVendorIds(newSelectedRegisteredVendorIds);
   };
 
-  const handleLimitChange = event => {
+  const handleLimitChange = (event) => {
     setLimit(event.target.value);
   };
 
@@ -136,14 +136,15 @@ const Results = ({ className, RegisteredVendors, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {RegisteredVendors.slice(0, limit).map(RegisteredVendor => (
+              {RegisteredVendors.slice(0, limit).map((RegisteredVendor) => (
                 <TableRow
                   hover
                   key={RegisteredVendor.id}
                   selected={
                     selectedRegisteredVendorIds.indexOf(RegisteredVendor.id) !==
                     -1
-                  }>
+                  }
+                >
                   <TableCell padding="checkbox">
                     <Checkbox
                       checked={
@@ -151,7 +152,7 @@ const Results = ({ className, RegisteredVendors, ...rest }) => {
                           RegisteredVendor.id
                         ) !== -1
                       }
-                      onChange={event =>
+                      onChange={(event) =>
                         handleSelectOne(event, RegisteredVendor.id)
                       }
                       value="true"
@@ -161,7 +162,8 @@ const Results = ({ className, RegisteredVendors, ...rest }) => {
                     <Box alignItems="center" display="flex">
                       <Avatar
                         className={classes.avatar}
-                        src={RegisteredVendor.avatarUrl}>
+                        src={RegisteredVendor.avatarUrl}
+                      >
                         {getInitials(RegisteredVendor.companyName)}
                       </Avatar>
                       <Typography color="textPrimary" variant="body1">
@@ -211,7 +213,7 @@ const Results = ({ className, RegisteredVendors, ...rest }) => {
 
 Results.propTypes = {
   className: PropTypes.string,
-  RegisteredVendors: PropTypes.array.isRequired
+  RegisteredVendors: PropTypes.array.isRequired,
 };
 
 export default Results;
