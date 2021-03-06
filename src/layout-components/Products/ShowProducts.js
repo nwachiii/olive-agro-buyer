@@ -1,42 +1,68 @@
-//
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import MetaTags from "react-meta-tags";
+import { fetchProducts } from "../../redux/product/productActions";
+
 import {
   Grid,
   Card,
   CardContent,
   Button,
-  ButtonGroup
-} from '@material-ui/core';
-import React from 'react';
+  ButtonGroup,
+} from "@material-ui/core";
 
-import stock1 from '../../assets/images/stock-photos/stock-1.jpg';
+function ShowProducts() {
+  const productList = useSelector((state) => state.productList);
+  const { products, loading } = productList;
+  console.log(productList);
+  console.log(products);
+  const dispatch = useDispatch();
 
-function ShowProducts({ products, ButtonText }) {
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
   return (
-    <Grid container spacing={4}>
-      {products.map(product => (
-        <Grid item xs={12} sm={6} md={4}>
-          <Card className="mb-4">
-            <img alt={product.title} className="card-img-top" src={stock1} />
-            <CardContent className="p-3">
-              <h5 className="card-title font-weight-bold font-size-lg flex-wrap">
-                {product.title}
-              </h5>
-              <p className="card-text">{product.category}</p>
-              <p className="card-text">
-                PRICE: <strong>{product.price}</strong>
-              </p>
-              <ButtonGroup>
-                <Button
-                  size="large"
-                  style={{ color: 'white', backgroundColor: '#0e9146' }}>
-                  {ButtonText}
-                </Button>
-              </ButtonGroup>
-            </CardContent>
-          </Card>
-        </Grid>
-      ))}
-    </Grid>
+    <>
+      <MetaTags>
+        <title>All Products</title>
+        <meta name="Display Products" content="Display Products." />
+      </MetaTags>
+      <Grid container spacing={4}>
+        {loading ? (
+          <div>Loading....</div>
+        ) : (
+          products.map((product, index) => (
+            <Grid item xs={12} sm={6} md={4}>
+              <Card key={index} className="mb-4">
+                <img
+                  alt={product.name}
+                  className="card-img-top"
+                  src={product.imageUrl}
+                />
+                <CardContent className="p-3">
+                  <h5 className="card-title font-weight-bold font-size-lg flex-wrap">
+                    {product.name}
+                  </h5>
+                  <p className="card-text">{product.category_name}</p>
+                  <p className="card-text">
+                    PRICE: <strong>{product.price_range}</strong>
+                  </p>
+                  <ButtonGroup>
+                    <Button
+                      size="large"
+                      style={{ color: "white", backgroundColor: "#0e9146" }}
+                    >
+                      CONTACT VENDOR
+                    </Button>
+                  </ButtonGroup>
+                </CardContent>
+              </Card>
+            </Grid>
+          ))
+        )}
+      </Grid>
+    </>
   );
 }
 
