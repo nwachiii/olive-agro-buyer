@@ -1,6 +1,6 @@
 //
 
-import { PRODUCTS_SUCCESS, PRODUCTS_FAILURE } from "../actions/productActions";
+import { PRODUCTS_SUCCESS, PRODUCTS_FAILURE } from "../types/productTypes";
 
 const initialState = {
   products: [],
