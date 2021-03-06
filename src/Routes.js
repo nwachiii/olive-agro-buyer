@@ -18,15 +18,6 @@ import AllProducts from "./layout-components/Products/AllProducts";
 import DeleteProducts from "./layout-components/Products/DeleteProducts";
 import ChangeProducts from "./layout-components/Products/ChangeProducts";
 import NewProduct from "./layout-components/Products/AddNewProduct";
-import AddCategory from "./layout-components/Products/AddCategory";
-import FruitsVeg from "./layout-components/Products/FruitsVeg";
-import Drinks from "./layout-components/Products/Drinks";
-import Spices from "./layout-components/Products/Spices";
-import DryHerbs from "./layout-components/Products/DryHerbs";
-import Legumes from "./layout-components/Products/Legumes";
-import Flours from "./layout-components/Products/Flours";
-import Oils from "./layout-components/Products/Oils";
-import Customers from "./layout-components/ViewUsers/Customers";
 import PendingVendors from "./layout-components/ViewUsers/Vendors/PendingVendors";
 import RegisteredVendors from "./layout-components/ViewUsers/Vendors/RegisteredVendors";
 
@@ -70,21 +61,6 @@ const Routes = () => {
         >
           <Switch>
             <Redirect exact from="/" to="/Home" />
-            {/* <Route path={["/LandingPage"]}>
-              <PresentationLayout>
-                <Switch location={location} key={location.pathname}>
-                  <motion.div
-                    initial="initial"
-                    animate="in"
-                    exit="out"
-                    variants={pageVariants}
-                    transition={pageTransition}
-                  >
-                    <Route path="/LandingPage" component={LandingPage} />
-                  </motion.div>
-                </Switch>
-              </PresentationLayout>
-            </Route> */}
 
             <Route
               path={[
@@ -95,17 +71,8 @@ const Routes = () => {
                 "/DeleteProducts",
                 "/ChangeProducts",
                 "/NewProduct",
-                "/AddCategory",
-                "/FruitsVeg",
-                "/Spices",
-                "/Drinks",
-                "/DryHerbs",
-                "/Legumes",
-                "/Oils",
-                "/Flours",
                 "/PendingVendors",
                 "/RegisteredVendors",
-                "/Customers",
                 "/Notifications",
               ]}
             >
@@ -125,20 +92,11 @@ const Routes = () => {
                     <Route path="/DeleteProducts" component={DeleteProducts} />
                     <Route path="/ChangeProducts" component={ChangeProducts} />
                     <Route path="/NewProduct" component={NewProduct} />
-                    <Route path="/AddCategory" component={AddCategory} />
-                    <Route path="/FruitsVeg" component={FruitsVeg} />
-                    <Route path="/Spices" component={Spices} />
-                    <Route path="/Drinks" component={Drinks} />
-                    <Route path="/DryHerbs" component={DryHerbs} />
-                    <Route path="/Legumes" component={Legumes} />
-                    <Route path="/Oils" component={Oils} />
-                    <Route path="/Flours" component={Flours} />
                     <Route path="/PendingVendors" component={PendingVendors} />
                     <Route
                       path="/RegisteredVendors"
                       component={RegisteredVendors}
                     />
-                    <Route path="/Customers" component={Customers} />
                   </motion.div>
                 </Switch>
               </LeftSidebar>

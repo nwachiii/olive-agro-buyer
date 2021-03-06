@@ -7,8 +7,8 @@ import { Hidden, Drawer, Paper } from "@material-ui/core";
 
 import { connect } from "react-redux";
 
-import SidebarHeader from "../../layout-components/SidebarHeader";
-import SidebarMenu from "../../layout-components/SidebarMenu";
+import SidebarHeader from "./SidebarHeader";
+import SidebarMenu from "./SidebarMenu";
 
 import navItems from "./navItems";
 
