@@ -7,7 +7,7 @@ import { Hidden, IconButton, AppBar, Box, Tooltip } from "@material-ui/core";
 
 import { connect } from "react-redux";
 
-import { setSidebarToggleMobile } from "../../redux/rootReducer/ThemeOptions";
+import { setSidebarToggleMobile } from "../../redux/reducers/ThemeOptions";
 import projectLogo from "../../assets/images/Asset 3.png";
 
 import HeaderLogo from "../../layout-components/HeaderLogo";

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MetaTags from "react-meta-tags";
-import { fetchProducts } from "../../redux/product/productActions";
+import { fetchProducts } from "../../redux/actions/productActions";
 
 import {
   Grid,
@@ -20,7 +20,7 @@ function ShowProducts() {
 
   useEffect(() => {
     dispatch(fetchProducts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -33,8 +33,8 @@ function ShowProducts() {
           <div>Loading....</div>
         ) : (
           products.map((product, index) => (
-            <Grid item xs={12} sm={6} md={4}>
-              <Card key={index} className="mb-4">
+            <Grid key={index} item xs={12} sm={6} md={4}>
+              <Card className="mb-4">
                 <img
                   alt={product.name}
                   className="card-img-top"

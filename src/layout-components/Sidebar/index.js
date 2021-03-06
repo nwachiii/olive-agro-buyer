@@ -12,7 +12,7 @@ import SidebarMenu from "../../layout-components/SidebarMenu";
 
 import navItems from "./navItems";
 
-import { setSidebarToggleMobile } from "../../redux/rootReducer/ThemeOptions";
+import { setSidebarToggleMobile } from "../../redux/reducers/ThemeOptions";
 
 const Sidebar = (props) => {
   const {
