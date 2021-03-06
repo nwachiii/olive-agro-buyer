@@ -1,25 +1,26 @@
-import React from 'react';
+import React from "react";
 
-import { Box, Container, makeStyles } from '@material-ui/core';
+import { Container, makeStyles } from "@material-ui/core";
 
 //components
-import Page from '../../Page';
-import Drinks from '../Drinks';
-import DryHerbs from '../DryHerbs';
-import FruitsVeg from '../FruitsVeg';
-import Flours from '../Flours';
-import Legumes from '../Legumes';
-import Oils from '../Oils';
-import Spices from '../Spices';
-import PageTitle from 'layout-components/PageTitle';
+import Page from "../../Page";
+// import Drinks from "../Drinks";
+// import DryHerbs from "../DryHerbs";
+// import FruitsVeg from "../FruitsVeg";
+// import Flours from "../Flours";
+// import Legumes from "../Legumes";
+// import Oils from "../Oils";
+// import Spices from "../Spices";
+// import PageTitle from "layout-components/PageTitle";
+import ShowProducts from "../ShowProducts";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: theme.palette.background.dark,
-    minHeight: '100%',
+    minHeight: "100%",
     paddingBottom: theme.spacing(3),
-    paddingTop: theme.spacing(3)
-  }
+    paddingTop: theme.spacing(3),
+  },
 }));
 
 function AllProducts() {
@@ -27,19 +28,14 @@ function AllProducts() {
   return (
     <Page className={classes.root} title="All Products">
       <Container maxWidth={false}>
-        <Box mt={3}>
-          <PageTitle
-            titleHeading="All Products"
-            titleDescription="Available Categories include: Dry herbs, Flours, Fruits and Vegetables, Drinks, Legumes, Oils, and Spices "
-          />
-          <DryHerbs ButtonText="Add to Cart" />
-          <Flours ButtonText="Add to Cart" />
-          <FruitsVeg ButtonText="Add to Cart" />
-          <Drinks ButtonText="Add to Cart" />
-          <Legumes ButtonText="Add to Cart" />
-          <Oils ButtonText="Add to Cart" />
-          <Spices ButtonText="Add to Cart" />
-        </Box>
+        <ShowProducts />
+        {/* <DryHerbs ButtonText={ButtonText} />
+          <Flours ButtonText={ButtonText} />
+          <FruitsVeg ButtonText={ButtonText} />
+          <Drinks ButtonText={ButtonText} />
+          <Legumes ButtonText={ButtonText} />
+          <Oils ButtonText={ButtonText} />
+          <Spices ButtonText={ButtonText} /> */}
       </Container>
     </Page>
   );
