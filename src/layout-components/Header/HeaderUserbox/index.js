@@ -1,23 +1,17 @@
-import React, { Fragment } from 'react';
+import React, { Fragment } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Avatar, Box, Menu, Button, Hidden } from "@material-ui/core";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { logout } from "../../../redux/actions/auth";
+import AuthLists from "./AuthLists";
+import GuestsLists from "./GuestsLists";
 
-import {
-  Avatar,
-  Box,
-  Menu,
-  Button,
-  List,
-  ListItem,
-  Divider,
-  Hidden
-} from '@material-ui/core';
-
-// import avatar5 from '../../assets/images/avatars/avatar5.jpg';
-export default function HeaderUserbox() {
+function HeaderUserbox({ auth, logout }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleClick = event => {
+  const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -25,26 +19,32 @@ export default function HeaderUserbox() {
     setAnchorEl(null);
   };
 
-  const userName = 'Ishola Farms';
+  //get authenticated user
+  const { isAuthenticated } = auth;
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
     <Fragment>
       <Button
         color="inherit"
         onClick={handleClick}
-        className="text-capitalize px-3 text-left btn-inverse d-flex align-items-center">
+        className="text-capitalize px-3 text-left btn-inverse d-flex align-items-center"
+      >
         <Box className="d-flex flex-wrap">
           <Hidden smDown>
             <h6 className="text-white-80 text-center my-auto mx-3">
-              Hi, {userName}{' '}
+              {user ? `Welcome, ${user.firstName}` : ""}
             </h6>
           </Hidden>
-          <Avatar sizes="44" alt="Ishola Farms" src={Avatar} />
+          <Avatar sizes="44" alt={user ? user.firstName : ""} src={Avatar} />
         </Box>
         <div className="d-none d-xl-block pl-3">
-          <div className="font-weight-bold pt-2 line-height-1">{userName}</div>
+          <div className="font-weight-bold pt-2 line-height-1">
+            {user ? ` ${user.firstName}  ${user.lastName}` : ""}
+          </div>
+          <span className="text-white-50 text-center">Vendor</span>
         </div>
         <span className="pl-1 pl-xl-3">
-          <FontAwesomeIcon icon={['fas', 'angle-down']} className="opacity-5" />
+          <FontAwesomeIcon icon={["fas", "angle-down"]} className="opacity-5" />
         </span>
       </Button>
 
@@ -54,35 +54,35 @@ export default function HeaderUserbox() {
         getContentAnchorEl={null}
         open={Boolean(anchorEl)}
         anchorOrigin={{
-          vertical: 'center',
-          horizontal: 'center'
+          vertical: "center",
+          horizontal: "center",
         }}
         transformOrigin={{
-          vertical: 'center',
-          horizontal: 'center'
+          vertical: "center",
+          horizontal: "center",
         }}
         onClose={handleClose}
-        className="ml-2">
+        className="ml-2"
+      >
         <div className="dropdown-menu-right dropdown-menu-lg overflow-hidden p-3">
-          <List className="text-left bg-transparent d-flex align-items-center flex-column pt-0">
-            <Box>
-              <Avatar sizes="44" alt="Ishola_Farms" src={Avatar} />
-            </Box>
-            <div className="pl-3  pr-3">
-              <div className="font-weight-bold text-center pt-2 pb-1 line-height-1">
-                {userName}
-              </div>
-            </div>
-            <Divider className="w-100 mt-2" />
-            <ListItem button>Account</ListItem>
-            <ListItem button>Profile settings</ListItem>
-            <ListItem button>Active sales</ListItem>
-            <Divider className="w-100 my-2" />
-            <ListItem button>Settings</ListItem>
-            <ListItem button>Log out</ListItem>
-          </List>
+          {isAuthenticated ? (
+            <AuthLists userName={user.firstName} logout={logout} />
+          ) : (
+            <GuestsLists />
+          )}
         </div>
       </Menu>
     </Fragment>
   );
 }
+
+HeaderUserbox.propTypes = {
+  logout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logout })(HeaderUserbox);
