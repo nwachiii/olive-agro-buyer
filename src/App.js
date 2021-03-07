@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <Provider store={configureStore}>
-        <BrowserRouter basename="/olive-agro-buyer/">
+        <BrowserRouter basename="/olive-agro/">
           <CssBaseline />
           <ScrollToTop>
             <Routes />

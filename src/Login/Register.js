@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useHistory, Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import MetaTags from "react-meta-tags";
-import { Tab, Nav } from "react-bootstrap";
 
 import {
   Grid,
@@ -83,110 +82,98 @@ const VendorRegister = ({ register, isAuthenticated }) => {
         <title>Olive Agro | Login</title>
         <meta
           name="description"
-          content="Login and Register page for olive agro admin "
+          content="Register page for olive agro admin "
         />
       </MetaTags>
 
       <Grid>
         <Paper elevation={10} style={paperStyle}>
-          <Tab.Container defaultActiveKey="register">
-            <Grid align="center">
-              <Avatar style={avatarStyle}>
-                <LockOutlinedIcon />
-              </Avatar>
-              <Nav variant="pills" className="login-register-tab-list">
-                <Nav.Item>
-                  <Nav.Link eventKey="register">
-                    <h4>Vendor Register</h4>
-                  </Nav.Link>
-                </Nav.Item>
-              </Nav>
-            </Grid>
-            <Tab.Content>
-              <Tab.Pane eventKey="register">
-                <form onSubmit={(e) => onSubmit(e)}>
-                  <TextField
-                    type="text"
-                    value={firstName}
-                    placeholder="First Name"
-                    label="firstName"
-                    name="firstName"
-                    onChange={(e) => onChange(e)}
-                    fullWidth
-                    required
-                    style={textfieldStyle}
-                  />
-                  <TextField
-                    className="p"
-                    type="text"
-                    value={lastName}
-                    placeholder="Last Name"
-                    label="lastName"
-                    name="lastName"
-                    onChange={(e) => onChange(e)}
-                    fullWidth
-                    required
-                    style={textfieldStyle}
-                  />
-                  <TextField
-                    type="email"
-                    value={email}
-                    placeholder="eee@gmail.com"
-                    label="email"
-                    name="email"
-                    onChange={(e) => onChange(e)}
-                    fullWidth
-                    required
-                    style={textfieldStyle}
-                  />
-                  <TextField
-                    type="tel"
-                    value={phoneNumber}
-                    placeholder="08012345678"
-                    label="phoneNumber"
-                    name="phoneNumber"
-                    onChange={(e) => onChange(e)}
-                    fullWidth
-                    required
-                    style={textfieldStyle}
-                  />
-                  <TextField
-                    type="password"
-                    placeholder="************"
-                    value={password}
-                    label="password"
-                    name="password"
-                    onChange={(e) => onChange(e)}
-                    fullWidth
-                    required
-                    style={textfieldStyle}
-                  />
-                  <TextField
-                    type="password"
-                    placeholder="************"
-                    value={password2}
-                    label="confirm password"
-                    name="password2"
-                    onChange={(e) => onChange(e)}
-                    // minLength='6'
-                    fullWidth
-                    required
-                    style={textfieldStyle}
-                  />
-                  <FormControlLabel
-                    control={<Checkbox name="checkedB" color="primary" />}
-                    label="Remember me"
-                  />
-                  <Button type="submit" style={btnstyle} fullWidth>
-                    Register
-                  </Button>
-                  <div className="text-center my-4">
-                    <Link to="/Login">Already have an account? Log in</Link>
-                  </div>
-                </form>
-              </Tab.Pane>
-            </Tab.Content>
-          </Tab.Container>
+          <Grid align="center">
+            <Avatar style={avatarStyle}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <h4>Vendor Registration</h4>
+          </Grid>
+          <form onSubmit={(e) => onSubmit(e)}>
+            <TextField
+              type="text"
+              value={firstName}
+              placeholder="First Name"
+              label="firstName"
+              name="firstName"
+              onChange={(e) => onChange(e)}
+              fullWidth
+              required
+              style={textfieldStyle}
+            />
+            <TextField
+              className="p"
+              type="text"
+              value={lastName}
+              placeholder="Last Name"
+              label="lastName"
+              name="lastName"
+              onChange={(e) => onChange(e)}
+              fullWidth
+              required
+              style={textfieldStyle}
+            />
+            <TextField
+              type="email"
+              value={email}
+              placeholder="eee@gmail.com"
+              label="email"
+              name="email"
+              onChange={(e) => onChange(e)}
+              fullWidth
+              required
+              style={textfieldStyle}
+            />
+            <TextField
+              type="tel"
+              value={phoneNumber}
+              placeholder="08012345678"
+              label="phoneNumber"
+              name="phoneNumber"
+              onChange={(e) => onChange(e)}
+              fullWidth
+              required
+              style={textfieldStyle}
+            />
+            <TextField
+              type="password"
+              placeholder="************"
+              value={password}
+              label="password"
+              name="password"
+              onChange={(e) => onChange(e)}
+              fullWidth
+              required
+              style={textfieldStyle}
+            />
+            <TextField
+              type="password"
+              placeholder="************"
+              value={password2}
+              label="confirm password"
+              name="password2"
+              onChange={(e) => onChange(e)}
+              // minLength='6'
+              fullWidth
+              required
+              style={textfieldStyle}
+            />
+            <FormControlLabel
+              control={<Checkbox name="checkedB" color="primary" />}
+              label="Remember me"
+            />
+            <Button type="submit" style={btnstyle} fullWidth>
+              Register
+            </Button>
+            <div className="text-center my-4">
+              <Link to="/Login">Already have an account? Log in</Link>
+            </div>
+          </form>
         </Paper>
       </Grid>
     </>
