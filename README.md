@@ -1,8 +1,4 @@
-<p align="center">
-    <a href="https://uifort.com" title="UiFort.com">
-        <img width=256px height=256px src="https://demo.uifort.com/github-static-assets/ui-fort-logo.png" alt="UiFort">
-    </a>
-</p>
+
 <h1 align="center">
     <a href="https://uifort.com/template/carolina-react-admin-dashboard-material-ui-free">Olive Agro Dashboard</a>
     <br>
