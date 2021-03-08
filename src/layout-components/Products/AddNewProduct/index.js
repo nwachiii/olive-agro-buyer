@@ -17,7 +17,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 //components
 import { addProduct } from "../../../redux";
-import ImageUpload from "./ImageUpload";
+import { ImageUpload } from "./ImageUpload";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -29,6 +29,20 @@ const useStyles = makeStyles((theme) => ({
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
+  },
+  uploadBtnStyle: {
+    color: "#000",
+    backgroundColor: "lightgray",
+    width: "100%",
+    fontWeight: 800,
+    "&:hover": {
+      color: "white",
+      backgroundColor: "#0e9146",
+      transform: "scale(0.8)",
+      transitionDuration: "1s",
+    },
+    padding: "1em 6px",
+    margin: "3px auto",
   },
 }));
 
@@ -99,12 +113,13 @@ function AddNewProduct() {
                 </Grid>
                 <Grid xs={12} lg={6} className="mx-2">
                   <FormControl
+                    fullWidth
                     variant="outlined"
                     className={classes.formControl}
                   >
                     <InputLabel
                       id="demo-simple-select-filled-label"
-                      labelWidth={100}
+                      labelWidth={60}
                     >
                       Select Category
                     </InputLabel>
@@ -149,18 +164,12 @@ function AddNewProduct() {
                   <ImageUpload />
                 </Grid>
                 <Button
-                  className="px-6 mx-auto my-3"
                   size="xl"
-                  variant="contained"
                   type="submit"
-                  style={{
-                    color: "white",
-                    backgroundColor: "#0e9146",
-                    width: "100%",
-                  }}
+                  className={classes.uploadBtnStyle}
                   onClick={handleSubmit}
                 >
-                  Submit
+                  UPLOAD PRODUCT
                 </Button>
               </form>
             </Grid>

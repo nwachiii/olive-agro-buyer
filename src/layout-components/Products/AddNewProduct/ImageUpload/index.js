@@ -1,122 +1,136 @@
-// import React, { useState } from 'react';
-// import firebase from 'firebase';
-// import { Button } from '@material-ui/core';
-// import { storage, db } from './firebase';
-// import './ImageUpload.css';
+import React, { useState } from "react";
+import {
+  LinearProgress,
+  Box,
+  Typography,
+  Button,
+  ListItem,
+  withStyles,
+} from "@material-ui/core";
 
-// function ImageUpload(username) {
-//   const [image, setImage] = useState(null);
-//   const [progress, setProgress] = useState(0);
-//   const [caption, setCaption] = useState('');
-
-//   const handleChange = e => {
-//     if (e.target.files[0]) {
-//       setImage(e.target.files[0]);
-//     }
-//   };
-
-//   const handleUpload = () => {
-//     const uploadTask = storage.ref(`images/${image.name}`).put(image);
-//     uploadTask.on(
-//       'state_changed',
-//       snapshot => {
-//         // progress indicator function...
-//         const progress = Math.round(
-//           (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-//         );
-//         setProgress(progress);
-//       },
-//       error => {
-//         // Error function
-//         console.log(error);
-//         alert(error.message);
-//       },
-//       () => {
-//         // complete function
-//         storage
-//           .ref('images')
-//           .child(image.name)
-//           .getDownloadURL() //get the download link of image uploaded
-//           .then(url => {
-//             // post image inside db automatically
-//             db.collection('posts').add({
-//               // eslint-disable-next-line no-undef
-//               timestamp: firebase.firestore.FieldValue.serverTimestamp,
-//               caption: caption,
-//               imageUrl: url,
-//               username: username
-//             });
-
-//             setProgress(0);
-//             setCaption('');
-//             setImage(null);
-//           });
-//       }
-//     );
-//   };
-
-//   return (
-//     <div className="image-upload">
-//       <progress className="image-upload__progress" value={progress} max="100" />
-//       <input
-//         type="text"
-//         placeholder="Enter a caption..."
-//         onChange={event => setCaption()}
-//         value={caption}
-//       />
-//       <input type="file" onChange={handleChange} />
-//       <Button onClick={handleUpload}>Upload</Button>
-//     </div>
-//   );
-// }
-
-// export default ImageUpload;
-
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
-
-const useStyles = makeStyles(theme => ({
+const BorderLinearProgress = withStyles((theme) => ({
   root: {
-    '& > *': {
-      margin: theme.spacing(1)
-    }
+    height: 15,
+    borderRadius: 5,
   },
-  input: {
-    display: 'none'
-  }
-}));
+  colorPrimary: {
+    backgroundColor: "#EEEEEE",
+  },
+  bar: {
+    borderRadius: 5,
+    backgroundColor: "#0e9146",
+  },
+}))(LinearProgress);
 
-export default function UploadButtons() {
-  const classes = useStyles();
+export const ImageUpload = () => {
+  const [ImageData, setImageData] = useState({
+    selectedFiles: undefined,
+    currentFile: undefined,
+    progress: 0,
+    message: "",
+    isError: false,
+    fileInfos: [],
+  });
+  const {
+    selectedFiles,
+    currentFile,
+    progress,
+    message,
+    fileInfos,
+    isError,
+  } = ImageData;
 
+  const selectFile = (event) => {
+    setImageData({
+      selectedFiles: event.target.files,
+    });
+  };
+
+  const upload = (event) => {
+    let currentFile = ImageData.selectedFiles[0];
+
+    setImageData({
+      progress: Math.round((100 * event.loaded) / event.total),
+      currentFile: currentFile,
+    });
+  };
   return (
-    <div className={classes.root}>
-      <input
-        accept="image/*"
-        className={classes.input}
-        id="contained-button-file"
-        multiple
-        type="file"
-      />
-      <label htmlFor="contained-button-file">
-        <Button variant="contained" color="info" component="span" size="xl">
+    <div className="mg20">
+      {currentFile && (
+        <Box className="mb25" display="flex" alignItems="center">
+          <Box width="100%" mr={1}>
+            <BorderLinearProgress variant="determinate" value={progress} />
+          </Box>
+          <Box minWidth={35}>
+            <Typography
+              variant="body2"
+              color="textSecondary"
+            >{`${progress}%`}</Typography>
+          </Box>
+        </Box>
+      )}
+
+      <div className="d-flex py-4 flex-wrap">
+        <label htmlFor="btn-upload">
+          <input
+            id="btn-upload"
+            name="btn-upload"
+            style={{ display: "none" }}
+            type="file"
+            onChange={selectFile}
+          />
+          <Button
+            className="btn-choose mr-4"
+            variant="outlined"
+            component="span"
+          >
+            Choose Files
+          </Button>
+        </label>
+        <div className="file-name">
+          {selectedFiles && selectedFiles.length > 0
+            ? selectedFiles[0].name
+            : null}
+        </div>
+        <Button
+          className="btn-upload p-2"
+          style={
+            selectedFiles
+              ? {
+                  color: "white",
+                  backgroundColor: "#0e9146",
+                  height: "30px",
+                  width: "70px",
+                  alignSelf: "center",
+                }
+              : {}
+          }
+          component="span"
+          disabled={!selectedFiles}
+          onClick={upload}
+        >
           Upload
         </Button>
-      </label>
-      <input
-        accept="image/*"
-        className={classes.input}
-        id="icon-button-file"
-        type="file"
-      />
-      <label htmlFor="icon-button-file">
-        <IconButton color="info" aria-label="upload picture" component="span">
-          <PhotoCamera />
-        </IconButton>
-      </label>
+      </div>
+
+      <Typography
+        variant="subtitle2"
+        className={`upload-message ${isError ? "error" : ""}`}
+      >
+        {message}
+      </Typography>
+
+      {/* <Typography variant="h6" className="list-header">
+        List of Files
+      </Typography> */}
+      <ul className="list-group">
+        {fileInfos &&
+          fileInfos.map((file, index) => (
+            <ListItem divider key={index}>
+              <a href={file.url}>{file.name}</a>
+            </ListItem>
+          ))}
+      </ul>
     </div>
   );
-}
+};
