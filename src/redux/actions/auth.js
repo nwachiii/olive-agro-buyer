@@ -37,7 +37,7 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-// Register User
+// Register Merchant
 export const register = ({
   firstName,
   lastName,
@@ -61,7 +61,7 @@ export const register = ({
 
   try {
     const res = await axios.post(
-      "https://www.api.oliveagro.org/api/users/create/user",
+      "https://www.api.oliveagro.org/api/users/create/merchant",
       body,
       config
     );
