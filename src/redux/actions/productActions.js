@@ -26,7 +26,7 @@ export const fetchProducts = () => async (dispatch) => {
 };
 
 //ADD PRODUCT
-export const addProduct = (productObj) => {
+export const addProduct = ({ productObj }) => {
   return (dispatch) => {
     dispatch(addProductRequest());
     axios

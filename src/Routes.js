@@ -73,6 +73,7 @@ const Routes = () => {
                 "/Home",
 
                 "/Inbox",
+                "/AllOrders",
                 "/AllProducts",
                 "/DeleteProducts",
                 "/ChangeProducts",

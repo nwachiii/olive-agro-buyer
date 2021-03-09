@@ -1,6 +1,11 @@
 //
 
-import { PRODUCTS_SUCCESS, PRODUCTS_FAILURE } from "../types/productTypes";
+import {
+  PRODUCTS_SUCCESS,
+  PRODUCTS_FAILURE,
+  ADD_PRODUCT_SUCCESS,
+  ADD_PRODUCT_FAILURE,
+} from "../types/productTypes";
 
 const initialState = {
   products: [],
@@ -21,6 +26,21 @@ export default function(state = initialState, action) {
       };
 
     case PRODUCTS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: payload,
+      };
+
+    case ADD_PRODUCT_SUCCESS:
+      const products = state.products.push(...payload.products);
+      return {
+        ...state,
+        products,
+        loading: false,
+      };
+
+    case ADD_PRODUCT_FAILURE:
       return {
         ...state,
         loading: false,

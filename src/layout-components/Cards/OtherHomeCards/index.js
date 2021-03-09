@@ -1,24 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
-import { Card, Grid } from '@material-ui/core';
-import { Box, Button, Flex, Heading } from '@chakra-ui/react';
+import { Card, Grid } from "@material-ui/core";
+import { Box, Button, Flex, Heading } from "@chakra-ui/react";
 
-import data from '../data.json';
+import data from "../data.json";
 
 export default function OtherHomeCards() {
   const [dataInfo] = useState(data.props);
   const [count] = useState(0);
   return (
     <>
-      {dataInfo.map(data => (
+      {dataInfo.map((data) => (
         <Grid container>
-          <Grid item xs={12} sm={12} lg={12} spacing={4}>
+          <Grid item xs={12} sm={12} lg={12}>
             <Card className=" mb-6 p-4 text-center">
               <Flex
                 w="100%"
                 justify="space-between"
                 borderBottom="1px solid lightgray"
-                wrap="wrap">
+                wrap="wrap"
+              >
                 <Box>
                   <Heading as="h5">{data.headerText}</Heading>
                 </Box>
@@ -26,7 +27,8 @@ export default function OtherHomeCards() {
                   direction="row"
                   justifyContent="space-between"
                   color="#0e9146"
-                  textAlign="center">
+                  textAlign="center"
+                >
                   <a href="/#" className="mr-3">
                     {count} {data.firstLink}
                   </a>
@@ -39,7 +41,8 @@ export default function OtherHomeCards() {
                 justify="center"
                 align="center"
                 maxW="100%"
-                my="50">
+                my="50"
+              >
                 <p>
                   <strong>{data.responseText}</strong>
                 </p>
@@ -50,7 +53,8 @@ export default function OtherHomeCards() {
                     height="38px"
                     width="200px"
                     border="2px"
-                    borderColor="green.50">
+                    borderColor="green.50"
+                  >
                     {data.buttonText}
                   </Button>
                 </a>

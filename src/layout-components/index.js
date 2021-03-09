@@ -6,4 +6,3 @@ export { default as SidebarHeader } from "./Sidebar/SidebarHeader";
 export { default as SidebarMenu } from "./Sidebar/SidebarMenu";
 export { default as PageTitle } from "./PageTitle";
 export { default as Footer } from "./Footer";
-export { default as ExampleWrapperSeamless } from "./Inbox/ExampleWrapperSeamless";
