@@ -1,11 +1,5 @@
 import axios from "axios";
-import {
-  PRODUCTS_SUCCESS,
-  PRODUCTS_FAILURE,
-  ADD_PRODUCT_REQUEST,
-  ADD_PRODUCT_SUCCESS,
-  ADD_PRODUCT_FAILURE,
-} from "../types/productTypes";
+import { PRODUCTS_SUCCESS, PRODUCTS_FAILURE } from "../types/productTypes";
 
 //Fetch products
 export const fetchProducts = () => async (dispatch) => {
@@ -25,39 +19,44 @@ export const fetchProducts = () => async (dispatch) => {
   }
 };
 
-//ADD PRODUCT
-export const addProduct = ({ productObj }) => {
-  return (dispatch) => {
-    dispatch(addProductRequest());
-    axios
-      .post("https://www.api.oliveagro.org/api/product/list/all", productObj)
-      .then((response) => {
-        const product = response.data;
-        console.log(product);
-        dispatch(addProductSuccess(product));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+//Get ImageUrl from Cloudinary
+export const getImageUrl = async ({ imageUrl }) => {
+  const image = new FormData();
+  image.append("image", imageUrl);
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+    },
   };
+  try {
+    const res = await axios.post(
+      "https://www.api.oliveagro.org/api/users/upload",
+      image,
+      config
+    );
+    console.log(res.data.image);
+    return res.data.image;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-export const addProductRequest = () => {
-  return {
-    type: ADD_PRODUCT_REQUEST,
-  };
-};
-
-export const addProductSuccess = (product) => {
-  return {
-    type: ADD_PRODUCT_SUCCESS,
-    payload: product,
-  };
-};
-
-export const addProductFailure = (error) => {
-  return {
-    type: ADD_PRODUCT_FAILURE,
-    payload: error,
-  };
-};
+// const getCacUrl = async () => {
+//   const image = new FormData();
+//   image.append("image", cac);
+//   const config = {
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   };
+//   try {
+//     const res = await axios.post(
+//       "https://www.api.oliveagro.org/api/users/upload",
+//       image,
+//       config
+//     );
+//     return res.data.image;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };

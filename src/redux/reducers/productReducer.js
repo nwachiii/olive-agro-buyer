@@ -8,8 +8,9 @@ import {
 } from "../types/productTypes";
 
 const initialState = {
-  products: [],
+  token: localStorage.getItem("token"),
   loading: true,
+  products: [],
   error: [],
 };
 
@@ -33,6 +34,8 @@ export default function(state = initialState, action) {
       };
 
     case ADD_PRODUCT_SUCCESS:
+      localStorage.setItem("token", payload.users.token);
+      localStorage.setItem("newProduct", JSON.stringify(payload.products));
       const products = state.products.push(...payload.products);
       return {
         ...state,
@@ -41,9 +44,12 @@ export default function(state = initialState, action) {
       };
 
     case ADD_PRODUCT_FAILURE:
+      localStorage.removeItem("token");
+      localStorage.removeItem("newProduct");
       return {
         ...state,
         loading: false,
+        products: null,
         error: payload,
       };
 

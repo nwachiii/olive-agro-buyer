@@ -1,22 +1,22 @@
-import React from 'react';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
+import React from "react";
+import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
+import Grid from "@material-ui/core/Grid";
 // import data from '../PendingVendors/data'
 
-import cacDocument from 'assets/documents/cac-document-sample.jpg';
-import driversLicense from 'assets/documents/drivers-license-sample.jpg';
+import cacDocument from "assets/documents/cac-document-sample.jpg";
+import driversLicense from "assets/documents/drivers-license-sample.jpg";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       flexGrow: 1,
-      padding: '2em'
+      padding: "2em",
     },
     paper: {
       padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary
-    }
+      textAlign: "center",
+      color: theme.palette.text.secondary,
+    },
   })
 );
 
@@ -27,8 +27,7 @@ function VendorInfo() {
 
   return (
     <div className={classes.root}>
-      {/* {VendorData.map(vendorInfo => (        ))}
-       */}
+      {/* {VendorData.map(vendorInfo => (        ))} */}
       <Grid container spacing={3}>
         <Grid item xs={12} sm={12}>
           <img className="card-img" src={cacDocument} alt="" />

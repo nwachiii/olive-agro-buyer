@@ -1,7 +1,6 @@
 import React from "react";
 import {
   Select,
-  FormControl,
   MenuItem,
   InputLabel,
   Grid,
@@ -9,47 +8,35 @@ import {
   Button,
   InputAdornment,
   OutlinedInput,
+  FormControl,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 
 //components
-import { ImageUpload } from "./ImageUpload";
+import { useStyles } from "./theme";
 
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  margin: {
-    margin: theme.spacing(1),
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-  uploadBtnStyle: {
-    color: "#000",
-    backgroundColor: "lightgray",
-    width: "100%",
-    fontWeight: 800,
-    "&:hover": {
-      color: "white",
-      backgroundColor: "#0e9146",
-      transform: "scale(0.8)",
-      transitionDuration: "1.5s",
-    },
-    padding: "1em 6px",
-    margin: "3px auto",
-  },
-}));
 const NewProductForm = (productProps) => {
-  const {
-    handleSubmit,
-    handleInputChange,
-    productPrice,
-    productCategory,
-    productName,
-  } = productProps;
   const classes = useStyles();
+
+  const {
+    productName,
+    productCategory,
+    productSubCategory,
+    productPrice,
+    productQty,
+    productImg,
+    setProductName,
+    setProductCategory,
+    setProductSubCategory,
+    setProductPrice,
+    setProductQty,
+    setProductImg,
+    handleSubmit,
+    listCategories,
+    listSubCatById,
+    selectedCatId,
+    setSelectedCatId,
+  } = productProps;
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -58,16 +45,19 @@ const NewProductForm = (productProps) => {
       <Grid item xs={12} lg={6}>
         <TextField
           fullWidth
-          className="m-2"
+          className="m-2 pr-2"
           id="outlined-basic"
           label="Product name"
           variant="outlined"
-          onChange={handleInputChange}
-          value={productName}
+          defaultValue={productName}
+          onChange={(e) => {
+            setProductName(e.target.value);
+          }}
         />
       </Grid>
       <Grid item xs={12} lg={6}>
         <FormControl
+          label="Product category"
           fullWidth
           variant="outlined"
           className={classes.formControl}
@@ -75,11 +65,85 @@ const NewProductForm = (productProps) => {
           <InputLabel id="demo-simple-select-filled-label">
             Select Category
           </InputLabel>
+
+          <Select
+            // id={id}
+            value={productCategory ? productCategory : ""}
+            onChange={(e) => {
+              setProductCategory(e.target.value);
+              // setSelectedCatId();
+              console.log(productCategory);
+            }}
+          >
+            {listCategories === undefined ? (
+              <h6 className={classes.textColor}>" Loading... "</h6>
+            ) : (
+              listCategories.map((category, id) => (
+                <MenuItem key={id} value={category.name ? category.name : ""}>
+                  {category.name}
+                  {productName === category.name &&
+                    setSelectedCatId(category._id)}
+                  {/* {console.log("productName: ", productName)}
+                  {console.log("catId / key:", category._id)}
+                  {console.log("SelectedCatId: ", selectedCatId)} */}
+                </MenuItem>
+              ))
+            )}
+          </Select>
+        </FormControl>
+      </Grid>
+      <Grid item xs={12} lg={6}>
+        <FormControl
+          label="Product category"
+          fullWidth
+          variant="outlined"
+          className={classes.formControl}
+        >
+          <InputLabel id="demo-simple-select-filled-label">
+            Select Sub-category
+          </InputLabel>
+
+          <Select
+            // id={id}
+            value={productSubCategory ? productSubCategory : ""}
+            onChange={(e) => {
+              setProductSubCategory(e.target.value);
+            }}
+          >
+            {listSubCatById === undefined ? (
+              <h6 className={classes.textColor}>
+                " Please select a category... "
+              </h6>
+            ) : (
+              listSubCatById.map((subCategory, id) => (
+                <MenuItem
+                  key="id"
+                  value={subCategory.name ? subCategory.name : ""}
+                >
+                  {subCategory.name}
+                </MenuItem>
+              ))
+            )}
+          </Select>
+        </FormControl>
+      </Grid>
+      {/* <Grid item xs={12} lg={6}>
+         <FormControl
+          label="Product category"
+          fullWidth
+          variant="outlined"
+          className={classes.formControl}
+        >
+          <InputLabel id="demo-simple-select-filled-label">
+            Select Sub-category
+          </InputLabel>
           <Select
             labelId="demo-simple-select-filled-label"
             id="demo-simple-select-filled"
+            defaultValue={productSubCategory || ""}
+            onChange={(e) => setProductSubCategory(e.target.value)}
           >
-            <MenuItem value={productCategory} onChange={handleInputChange}>
+            <MenuItem value="" disabled>
               <em>None</em>
             </MenuItem>
             <MenuItem value="Fruits/Vegs">Fruits/Vegs</MenuItem>
@@ -91,18 +155,41 @@ const NewProductForm = (productProps) => {
             <MenuItem value="Spices">Spices</MenuItem>
           </Select>
         </FormControl>
+      </Grid> */}
+
+      <Grid item xs={12} lg={6}>
+        <TextField
+          fullWidth
+          className="m-2 pl-2"
+          id="outlined-basic"
+          label="Quantity"
+          variant="outlined"
+          defaultValue={productQty}
+          onChange={(e) => setProductQty(e.target.value)}
+        />
       </Grid>
-      <FormControl fullWidth className={classes.margin} variant="outlined">
-        <InputLabel htmlFor="outlined-adornment-amount">Price</InputLabel>
+      <FormControl
+        label="Product Price"
+        fullWidth
+        className={classes.margin}
+        variant="outlined"
+      >
         <OutlinedInput
           id="outlined-adornment-amount"
-          value={productPrice}
-          onChange={handleInputChange}
+          defaultValue={productPrice}
+          onChange={(e) => setProductPrice(e.target.value)}
           startAdornment={<InputAdornment position="start">#</InputAdornment>}
         />
       </FormControl>
-      <Grid item xs={12} lg={12}>
-        <ImageUpload />
+      <Grid item xs={12} lg={12} className="d-flex flex-column my-3 ml-2">
+        <label className="text-ash">Product Image: </label>
+        <input
+          type="file"
+          placeholder=""
+          name={productImg}
+          onChange={(e) => setProductImg(e.target.files[0])}
+          required
+        />
       </Grid>
       <Button
         size="large"

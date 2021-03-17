@@ -37,7 +37,7 @@ function ShowProducts() {
               <Card className="mb-4">
                 <img
                   alt={product.name}
-                  className="card-img-top"
+                  className="card-img-top .card-img-overlay"
                   src={product.imageUrl}
                 />
                 <CardContent className="p-3">

@@ -78,7 +78,9 @@
   border-bottom: $card-border-width solid $card-border-color;
 
   &:first-child {
-    @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
+    @include border-radius(
+      $card-inner-border-radius $card-inner-border-radius 0 0
+    );
   }
 
   + .list-group {
@@ -94,10 +96,11 @@
   border-top: $card-border-width solid $card-border-color;
 
   &:last-child {
-    @include border-radius(0 0 $card-inner-border-radius $card-inner-border-radius);
+    @include border-radius(
+      0 0 $card-inner-border-radius $card-inner-border-radius
+    );
   }
 }
-
 
 //
 // Header navs
@@ -128,20 +131,24 @@
 .card-img,
 .card-img-top,
 .card-img-bottom {
-  flex-shrink: 0; // For IE: https://github.com/twbs/bootstrap/issues/29396
+  flex-shrink: 1; // For IE: https://github.com/twbs/bootstrap/issues/29396
   width: 100%; // Required because we use flexbox and this inherently applies align-self: stretch
+  max-height: 300px;
+  min-height: 300px;
+  align-self: unset;
 }
 
 .card-img,
 .card-img-top {
   @include border-top-radius($card-inner-border-radius);
+  border: 1px solid lightgray;
+  border-width: 100%;
 }
 
 .card-img,
 .card-img-bottom {
   @include border-bottom-radius($card-inner-border-radius);
 }
-
 
 // Card deck
 
@@ -163,9 +170,13 @@
       margin-bottom: 0; // Override the default
       margin-left: $card-deck-margin;
     }
+    // .card-img,
+    // .card-img-top {
+    //   max-height: 100px;
+    //   min-height: 100px;
+    // }
   }
 }
-
 
 //
 // Card groups
@@ -229,7 +240,6 @@
   }
 }
 
-
 //
 // Columns
 //
@@ -251,7 +261,6 @@
     }
   }
 }
-
 
 //
 // Accordion

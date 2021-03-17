@@ -22,7 +22,7 @@ const BorderLinearProgress = withStyles((theme) => ({
   },
 }))(LinearProgress);
 
-export const ImageUpload = () => {
+export const ImageUpload = ({ selectFile, uploadOnChange }) => {
   const [ImageData, setImageData] = useState({
     selectedFiles: undefined,
     currentFile: undefined,
@@ -40,20 +40,21 @@ export const ImageUpload = () => {
     isError,
   } = ImageData;
 
-  const selectFile = (event) => {
+  selectFile = (event) => {
     setImageData({
       selectedFiles: event.target.files,
     });
   };
 
-  const upload = (event) => {
-    let currentFile = ImageData.selectedFiles[0];
+  // const upload = (event) => {
+  //   let currentFile = ImageData.selectedFiles[0];
 
-    setImageData({
-      progress: Math.round((100 * event.loaded) / event.total),
-      currentFile: currentFile,
-    });
-  };
+  //   setImageData({
+  //     progress: Math.round((100 * event.loaded) / event.total),
+  //     currentFile: currentFile,
+  //   });
+  // };
+
   return (
     <div className="mg20">
       {currentFile && (
@@ -77,6 +78,7 @@ export const ImageUpload = () => {
             name="btn-upload"
             style={{ display: "none" }}
             type="file"
+            // onChange={uploadOnChange}
             onChange={selectFile}
           />
           <Button
@@ -92,7 +94,7 @@ export const ImageUpload = () => {
             ? selectedFiles[0].name
             : null}
         </div>
-        <Button
+        {/* <Button
           className="btn-upload p-2"
           style={
             selectedFiles
@@ -110,7 +112,7 @@ export const ImageUpload = () => {
           onClick={upload}
         >
           Upload
-        </Button>
+        </Button> */}
       </div>
 
       <Typography
