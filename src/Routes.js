@@ -15,11 +15,9 @@ import { LeftSidebar } from "./layout-blueprints";
 import Inbox from "./layout-components/Inbox";
 import AllOrders from "./layout-components/OliveOrders/AllOrders";
 import AllProducts from "./layout-components/Products/AllProducts";
-import DeleteProducts from "./layout-components/Products/DeleteProducts";
-import ChangeProducts from "./layout-components/Products/ChangeProducts";
+// import DeleteProducts from "./layout-components/Products/DeleteProducts";
+// import ChangeProducts from "./layout-components/Products/ChangeProducts";
 import NewProduct from "./layout-components/Products/AddNewProduct";
-import PendingVendors from "./layout-components/Vendors/PendingVendors";
-import RegisteredVendors from "./layout-components/Vendors/RegisteredVendors";
 
 const Home = lazy(() => import("./layout-components/Home"));
 
@@ -75,11 +73,9 @@ const Routes = () => {
                 "/Inbox",
                 "/AllOrders",
                 "/AllProducts",
-                "/DeleteProducts",
-                "/ChangeProducts",
+                // "/DeleteProducts",
+                // "/ChangeProducts",
                 "/NewProduct",
-                "/PendingVendors",
-                "/RegisteredVendors",
                 "/Notifications",
               ]}
             >
@@ -96,14 +92,9 @@ const Routes = () => {
                     <Route path="/Inbox" component={Inbox} />
                     <Route path="/AllOrders" component={AllOrders} />
                     <Route path="/AllProducts" component={AllProducts} />
-                    <Route path="/DeleteProducts" component={DeleteProducts} />
-                    <Route path="/ChangeProducts" component={ChangeProducts} />
+                    {/* <Route path="/DeleteProducts" component={DeleteProducts} />
+                    <Route path="/ChangeProducts" component={ChangeProducts} /> */}
                     <Route path="/NewProduct" component={NewProduct} />
-                    <Route path="/PendingVendors" component={PendingVendors} />
-                    <Route
-                      path="/RegisteredVendors"
-                      component={RegisteredVendors}
-                    />
                   </motion.div>
                 </Switch>
               </LeftSidebar>

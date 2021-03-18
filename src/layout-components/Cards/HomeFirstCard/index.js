@@ -8,8 +8,8 @@ export default function HomeFirstCard() {
   const user = JSON.parse(localStorage.getItem("user"));
   return (
     <Fragment>
-      <Grid container>
-        <Grid item xs={12} sm={12} lg={12} spacing={4}>
+      <Grid container spacing={4}>
+        <Grid item xs={12} sm={12} lg={12}>
           <Card className="p-3 mb-4 align-box-row flex-wrap">
             <div className="align-box-row mb-4 mr-auto flex-wrap">
               <a className="pr-3 mx-auto" href="/#">
