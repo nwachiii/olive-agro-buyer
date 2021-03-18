@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import {
   Select,
   MenuItem,
@@ -16,6 +17,52 @@ import { useStyles } from "./theme";
 
 const NewProductForm = (productProps) => {
   const classes = useStyles();
+  const [listCategories, setListCategories] = useState([]);
+  const [listSubCatById, setListSubCatById] = useState([]);
+
+  const getCatId = (arg) => {
+    // eslint-disable-next-line
+    listCategories.filter((category) => {
+      if (category.name === arg) {
+        console.log("filter category", category);
+        console.log("argument", arg);
+        getSubCategories(category._id);
+        return category;
+      }
+    });
+  };
+
+  //fetch all categories
+  useEffect(() => {
+    axios
+      .get("https://www.api.oliveagro.org/api/category/list/all")
+      .then((response) => {
+        //map all category details
+        setListCategories(response.data.categories);
+        console.log("categories Inside axios", listCategories);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    // eslint-disable-next-line
+  }, []);
+
+  //fetch subcategory by category ID
+  //set id to be the selected category id
+  const getSubCategories = async (selectedCatId) => {
+    try {
+      await axios
+        .get(
+          `https://www.api.oliveagro.org/api/subCategory/category/${selectedCatId}`
+        )
+        .then((response) => {
+          setListSubCatById(response.data.subCategory);
+          console.log("Get sub categories", listSubCatById);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const {
     productName,
@@ -31,10 +78,6 @@ const NewProductForm = (productProps) => {
     setProductQty,
     setProductImg,
     handleSubmit,
-    listCategories,
-    listSubCatById,
-    selectedCatId,
-    setSelectedCatId,
   } = productProps;
 
   return (
@@ -62,33 +105,22 @@ const NewProductForm = (productProps) => {
           variant="outlined"
           className={classes.formControl}
         >
-          <InputLabel id="demo-simple-select-filled-label">
-            Select Category
-          </InputLabel>
+          <InputLabel>Select Category</InputLabel>
 
           <Select
-            // id={id}
-            value={productCategory ? productCategory : ""}
+            value={productCategory}
             onChange={(e) => {
+              getCatId(productCategory);
               setProductCategory(e.target.value);
-              // setSelectedCatId();
-              console.log(productCategory);
             }}
           >
-            {listCategories === undefined ? (
-              <h6 className={classes.textColor}>" Loading... "</h6>
-            ) : (
-              listCategories.map((category, id) => (
-                <MenuItem key={id} value={category.name ? category.name : ""}>
-                  {category.name}
-                  {productName === category.name &&
-                    setSelectedCatId(category._id)}
-                  {/* {console.log("productName: ", productName)}
-                  {console.log("catId / key:", category._id)}
-                  {console.log("SelectedCatId: ", selectedCatId)} */}
-                </MenuItem>
-              ))
-            )}
+            {!listCategories
+              ? null
+              : listCategories.map((category, id) => (
+                  <MenuItem key={id} value={category.name}>
+                    {category.name}
+                  </MenuItem>
+                ))}
           </Select>
         </FormControl>
       </Grid>
@@ -99,63 +131,22 @@ const NewProductForm = (productProps) => {
           variant="outlined"
           className={classes.formControl}
         >
-          <InputLabel id="demo-simple-select-filled-label">
-            Select Sub-category
-          </InputLabel>
+          <InputLabel>Select Sub-category</InputLabel>
 
           <Select
-            // id={id}
-            value={productSubCategory ? productSubCategory : ""}
+            value={productSubCategory}
             onChange={(e) => {
               setProductSubCategory(e.target.value);
             }}
           >
-            {listSubCatById === undefined ? (
-              <h6 className={classes.textColor}>
-                " Please select a category... "
-              </h6>
-            ) : (
-              listSubCatById.map((subCategory, id) => (
-                <MenuItem
-                  key="id"
-                  value={subCategory.name ? subCategory.name : ""}
-                >
-                  {subCategory.name}
-                </MenuItem>
-              ))
-            )}
+            {listSubCatById.map((subCategory, id) => (
+              <MenuItem key={id} value={subCategory.name}>
+                {subCategory.name}
+              </MenuItem>
+            ))}
           </Select>
         </FormControl>
       </Grid>
-      {/* <Grid item xs={12} lg={6}>
-         <FormControl
-          label="Product category"
-          fullWidth
-          variant="outlined"
-          className={classes.formControl}
-        >
-          <InputLabel id="demo-simple-select-filled-label">
-            Select Sub-category
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-filled-label"
-            id="demo-simple-select-filled"
-            defaultValue={productSubCategory || ""}
-            onChange={(e) => setProductSubCategory(e.target.value)}
-          >
-            <MenuItem value="" disabled>
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value="Fruits/Vegs">Fruits/Vegs</MenuItem>
-            <MenuItem value="Drinks">Drinks</MenuItem>
-            <MenuItem value="Dry Herbs">Dry Herbs</MenuItem>
-            <MenuItem value="Flours">Flours</MenuItem>
-            <MenuItem value="Legumes">Legumes</MenuItem>
-            <MenuItem value="Oils">Oils</MenuItem>
-            <MenuItem value="Spices">Spices</MenuItem>
-          </Select>
-        </FormControl>
-      </Grid> */}
 
       <Grid item xs={12} lg={6}>
         <TextField
