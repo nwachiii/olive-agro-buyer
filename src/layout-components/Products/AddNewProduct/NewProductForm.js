@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
-  Select,
-  MenuItem,
-  InputLabel,
   Grid,
   TextField,
   Button,
   InputAdornment,
   OutlinedInput,
-  FormControl,
+  FormControl
 } from "@material-ui/core";
 
 //components
@@ -20,18 +17,6 @@ const NewProductForm = (productProps) => {
   const [listCategories, setListCategories] = useState([]);
   const [listSubCatById, setListSubCatById] = useState([]);
 
-  const getCatId = (arg) => {
-    // eslint-disable-next-line
-    listCategories.filter((category) => {
-      if (category.name === arg) {
-        console.log("filter category", category);
-        console.log("argument", arg);
-        getSubCategories(category._id);
-        return category;
-      }
-    });
-  };
-
   //fetch all categories
   useEffect(() => {
     axios
@@ -39,7 +24,6 @@ const NewProductForm = (productProps) => {
       .then((response) => {
         //map all category details
         setListCategories(response.data.categories);
-        console.log("categories Inside axios", listCategories);
       })
       .catch((err) => {
         console.log(err);
@@ -49,11 +33,14 @@ const NewProductForm = (productProps) => {
 
   //fetch subcategory by category ID
   //set id to be the selected category id
-  const getSubCategories = async (selectedCatId) => {
+  const getCatId = async (categoryId) => {
+    console.log(listCategories);
+    console.log(categoryId);
+    // eslint-disable-next-line
     try {
       await axios
         .get(
-          `https://www.api.oliveagro.org/api/subCategory/category/${selectedCatId}`
+          `https://www.api.oliveagro.org/api/subCategory/category/${categoryId}`
         )
         .then((response) => {
           setListSubCatById(response.data.subCategory);
@@ -66,8 +53,6 @@ const NewProductForm = (productProps) => {
 
   const {
     productName,
-    productCategory,
-    productSubCategory,
     productPrice,
     productQty,
     productImg,
@@ -78,6 +63,7 @@ const NewProductForm = (productProps) => {
     setProductQty,
     setProductImg,
     handleSubmit,
+    formStyles,
   } = productProps;
 
   return (
@@ -99,59 +85,64 @@ const NewProductForm = (productProps) => {
         />
       </Grid>
       <Grid item xs={12} lg={6}>
-        <FormControl
-          label="Product category"
-          fullWidth
-          variant="outlined"
-          className={classes.formControl}
-        >
-          <InputLabel>Select Category</InputLabel>
-
-          <Select
-            value={productCategory}
-            onChange={(e) => {
-              getCatId(productCategory);
-              setProductCategory(e.target.value);
-            }}
+        <div style={formStyles.formInput}>
+          <select
+            onChange={(e) => getCatId(e.target.value)}
+            // value={productCategory}
+            // onChange={(e) => {
+            //   getCatId(productCategory);
+            //   setProductCategory(e.target.value);
+            // }}
+            style={formStyles.input}
           >
-            {!listCategories
-              ? null
-              : listCategories.map((category, id) => (
-                  <MenuItem key={id} value={category.name}>
-                    {category.name}
-                  </MenuItem>
-                ))}
-          </Select>
-        </FormControl>
+            <option value="" selected disabled hidden>
+              Select Category
+            </option>
+            {!listCategories.length ? (
+              <h4 className={classes.textColor}>
+                Please check your network connection and ensure you are logged
+                in
+              </h4>
+            ) : (
+              listCategories.map((category, id) => (
+                <option
+                  key={id}
+                  value={
+                    (() => category._id, setProductCategory(category.name))
+                  }
+                >
+                  {category.name}
+                </option>
+              ))
+            )}
+          </select>
+        </div>
       </Grid>
       <Grid item xs={12} lg={6}>
-        <FormControl
-          label="Product category"
-          fullWidth
-          variant="outlined"
-          className={classes.formControl}
-        >
-          <InputLabel>Select Sub-category</InputLabel>
-
-          <Select
-            value={productSubCategory}
-            onChange={(e) => {
-              setProductSubCategory(e.target.value);
-            }}
-          >
+        <div style={formStyles.formInput}>
+          <select style={formStyles.input}>
+            <option value="" selected disabled hidden>
+              Select Sub-category
+            </option>
             {listSubCatById.map((subCategory, id) => (
-              <MenuItem key={id} value={subCategory.name}>
+              <option
+                key={id}
+                value={
+                  (() => subCategory.name,
+                  setProductSubCategory(subCategory.name))
+                }
+              >
                 {subCategory.name}
-              </MenuItem>
+              </option>
             ))}
-          </Select>
-        </FormControl>
+          </select>
+        </div>
       </Grid>
 
       <Grid item xs={12} lg={6}>
         <TextField
           fullWidth
-          className="m-2 pl-2"
+          className="m-2 pl-2 pr-2"
           id="outlined-basic"
           label="Quantity"
           variant="outlined"
@@ -166,7 +157,6 @@ const NewProductForm = (productProps) => {
         variant="outlined"
       >
         <OutlinedInput
-          id="outlined-adornment-amount"
           defaultValue={productPrice}
           onChange={(e) => setProductPrice(e.target.value)}
           startAdornment={<InputAdornment position="start">#</InputAdornment>}

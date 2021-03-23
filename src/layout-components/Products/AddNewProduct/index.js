@@ -14,6 +14,21 @@ function AddNewProduct() {
   const [productPrice, setProductPrice] = useState("");
   const [productImg, setProductImg] = useState(null);
 
+  const formStyles = {
+    input: {
+      padding: "15px 7px",
+      borderRadius: "10px",
+      height: "55px",
+      width: "100%",
+      border: "1px solid lightgray",
+      marginBottom: "7px",
+      color: '#929292'
+    },
+    formInput: {
+      marginTop: "7px",
+      marginLeft: "15px",
+    },
+  };
   const resetForm = () => {
     return (
       setProductName(""),
@@ -82,6 +97,7 @@ function AddNewProduct() {
                 setProductQty={setProductQty}
                 setProductImg={setProductImg}
                 handleSubmit={handleSubmit}
+                formStyles={formStyles}
               />
             </Grid>
           </Grid>
