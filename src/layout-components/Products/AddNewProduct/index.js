@@ -3,7 +3,6 @@ import { Grid, Card, Divider } from "@material-ui/core";
 import axios from "axios";
 
 //components
-import { getImageUrl } from "../../../redux";
 import NewProductForm from "./NewProductForm";
 
 function AddNewProduct() {
@@ -40,13 +39,32 @@ function AddNewProduct() {
     );
   };
 
+      
+      const getImageUrl = async () => {
+        const image = new FormData();
+        image.append("image", productImg);
+        const config = {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+        try {
+          const res = await axios.post(
+            "https://www.api.oliveagro.org/api/users/upload",
+            image,
+            config
+          );
+          return res.data.image;
+        } catch (error) {
+          console.log(error.response.data.message);
+        }
+      };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const productImage = await getImageUrl({
-      productImg,
-    });
-    resetForm();
+    const productImage = await getImageUrl();
+
     const token = localStorage.getItem("token");
     const config = {
       headers: {
@@ -56,23 +74,33 @@ function AddNewProduct() {
 
     const body = JSON.stringify({
       name: productName,
+      price_range: productPrice,
+      quantity: productQty,
+      imageUrl: productImage,
       category_name: productCategory,
       sub_category_name: productSubCategory,
-      quantity: productQty,
-      price_range: productPrice,
-      imageUrl: productImage,
     });
-
+    console.log("body: ", body)
+    
     try {
       await axios.post(
         "https://www.api.oliveagro.org/api/product/create",
-        body,
+        {
+          name: productName,
+          price_range: productPrice,
+          quantity: productQty,
+          imageUrl: productImage,
+          category_name: productCategory,
+          sub_category_name: productSubCategory,
+        },
         config
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
+        );
+      } catch (error) {
+        console.log(error);
+      }
+    
+      resetForm();
+    };
 
   return (
     <Grid container spacing={4}>

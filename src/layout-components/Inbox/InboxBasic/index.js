@@ -33,7 +33,7 @@ export default function LivePreviewExample() {
             justifySelf="center"
           />
           <Text color="darkgray">
-            Easily chat and collaborate on the go with Alibaba.com App.
+            Easily chat and collaborate on the go with oliveagro.org App.
           </Text>
           <Link href="#" color="teal.300" isExternal>
             Download the mobile app
